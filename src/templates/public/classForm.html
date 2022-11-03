@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/class" method="POST">
+<form action="/regclasse" method="POST">
     <input type="text" name="institution" placeholder="Digite o nome da instituição:  ">
     <input type="number" name="course" placeholder="Digite o nome do curso: ">
     <input type="number" name="status_class" placeholder="Qual é o status da turma?">
@@ -17,8 +17,8 @@
 </form>
 
 {% for class in data %}
-{{teacher.1}}
-{{teacher.4}}
+{{class.1}}
+{{class.4}}
 {% endfor %}
 
 

@@ -155,7 +155,7 @@ def regcourse():
     return render_template('public/courseForm.html')
 
 
-@app.route("/class", methods=['GET', 'POST'])
+@app.route("/classe", methods=['GET'])
 def classe():
     if request.method == "GET":
         with mysql.cursor() as cur:
@@ -163,6 +163,9 @@ def classe():
             data = cur.fetchall()
         return render_template('public/classForm.html', data=data)
 
+
+@app.route("/regclasse", methods=['POST'])
+def reglasse():
     if request.method == "POST":
         institution = request.form['institution']
         course = request.form['course']
@@ -180,15 +183,16 @@ def classe():
                 cur.execute(
                     "INSERT INTO class(institution, course,status_class, type_class, expected_numb_stud, "
                     "enrolled_numb_stud, semester, matrix_curriculum, turn_class, series_class ) VALUES (%s, %s, %s, "
-                    "%s, %s, %s, %s, %s)",
+                    "%s, %s, %s, %s, %s, %s, %s)",
                     (institution, course, status_class, type_class, expected_numb_stud, enrolled_numb_stud, semester,
                      matrix_curriculum, turn_class, series_class))
                 cur.connection.commit()
                 flash('Inserido com sucesso!', 'success')
             except:
                 flash('Não foi inserido!', 'error')
-            return redirect('/class')
+            return redirect('/classe')
     return render_template("public/classForm.html")
+
 
 
 @app.route("/discipline", methods=['GET', 'POST'])
