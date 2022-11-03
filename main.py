@@ -6,4 +6,5 @@ DEBUG = True
 
 
 if __name__ == "__main__":
+    app.secret_key = '012#!APaAjaBoleh)(*^%'
     app.run(HOST, PORT, DEBUG)
