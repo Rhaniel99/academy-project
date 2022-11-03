@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/academic_period" method="POST">
+    <input type="number" name="'academic_period_name" placeholder="Digite o período: ">
+    <input type="number" name="date_start" placeholder="Digite a data de início: ">
+    <input type="number" name="date_end" placeholder="Digite a data de término: ">
+    <input type="text" name="academic_period_description" placeholder="Insira uma descrição: ">
+
+   
+    <button type="submit">Cadastrar</button>
+</form>
+
+{% for academic_period in data %}
+{{teacher.1}}
+{{teacher.4}}
+{% endfor %}
+
+
+
+{% endblock %}

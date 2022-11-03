@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="/updatetea/{{onetea.2}}" method="POST">
+    <input type="text" name="full_n_teacher" value="{{onetea.1}}" placeholder="Digite o nome do professor: ">
+    <input type="number" name="register_teacher" value="{{onetea.2}}" placeholder="Digite a matricula do professor">
+    <input type="number" name="hist_vh_teacher" value="{{onetea.3}}" placeholder="Quanto é o historico de valor hora por aula?">
+    <input type="text" name="tittle_teacher" value="{{onetea.4}}" placeholder="Qual a graduação do professor?">
+    <input type="text" name="reg_w_teacher" value="{{onetea.5}}" placeholder="Qual o regime de trabalho do professor?">
+    <input type="date" name="hiring_d_teacher" value="{{onetea.6}}" placeholder="Qual a data de contratação do professor?">
+    <input type="date" name="close_d_teacher" value="{{onetea.7}}" placeholder="Qual a data de desligamento do professor?">
+    <input type="text" name="status_teacher" value="{{onetea.8}}" placeholder="Status: ">
+
+    <button type="submit">Atualizar</button>
+</form>
+
+
+{% endblock %}

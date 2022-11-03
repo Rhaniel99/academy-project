@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/planning" method="POST">
+    <input type="number" name="'semester" placeholder="Digite o semestre: ">
+    <input type="number" name="planning_class" placeholder="Digite a turma: ">
+    <input type="text" name="planning_status" placeholder="Digite o status: ">
+    <input type="number" name="planning_workload" placeholder="Digite a carga horária: ">
+    <input type="text" name="'modalit_offering" placeholder="Digite a modalidade: ">
+    <input type="text" name="planning_subject" placeholder="Digite a disciplina: ">
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+{% for planning in data %}
+{{teacher.1}}
+{{teacher.4}}
+{% endfor %}
+
+
+
+{% endblock %}

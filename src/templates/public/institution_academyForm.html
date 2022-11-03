@@ -1,0 +1,20 @@
+o{% extends "base.html" %}
+{% block content %}
+
+<form action="/institution_academy" method="POST">
+    <input type="text" name="'institution_name" placeholder="Digite o nome da instituição: ">
+    <input type="text" name="headquarters" placeholder="Digite a matriz: ">
+    <input type="text" name="branch" placeholder="Insira a filial: ">
+    <input type="text" name="courses" placeholder="Insira o curso">
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+{% for institution_academy in data %}
+{{teacher.1}}
+{{teacher.4}}
+{% endfor %}
+
+
+
+{% endblock %}

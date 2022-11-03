@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <header>Cadastro de Professor(a)</header>
+    <form action="regteacher" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações do(a) professor(a)</span><br><br>
+                <div class="fields">
+                    <div class="input field">
+                        <label>Nome completo:</label>
+                        <input name="full_n_teacher" type="text" placeholder="Digite o nome do professor" required>
+                    </div>
+                    <br>
+                    <div class="input field">
+                        <div class="input field">
+                            <label>Matrícula:</label>
+                            <input name="register_teacher" type="number" placeholder=" Digite a matrícula" required>
+                        </div>
+                        <br>
+                        <div class="input field">
+                            <label>Graduação:</label>
+                            <input type="text" placeholder="Informe a graduação" required>
+                        </div>
+                        <br>
+                        <div class="input field">
+                            <label>Histórico de hora-aula:</label>
+                            <input name="hist_vh_teacher" type="text" placeholder="Informe a hora-aula" required>
+                        </div>
+                        <br>
+                        <div class="input field">
+                            <label>Titulação:</label>
+                            <input type="text" name="tittle_teacher" placeholder="Qual a graduação do professor?">
+                        </div>
+                        <br>
+                        <div class="input field">
+                            <label>Regime de trabalho:</label>
+                            <input type="text" name="reg_w_teacher"
+                                placeholder="Qual o regime de trabalho do professor?">
+                        </div>
+                        <br>
+                        <div class="input field">
+                            <label>Data de contratação:</label>
+                            <input type="Date" name="hiring_d_teacher" placeholder="Selecione a data" required>
+                        </div>
+                        <br>
+                        <div class="input field">
+                            <label>Data do desligamento:</label>
+                            <input type="Date" name="close_d_teacher" placeholder="Selecione a data" required>
+                        </div>
+                        <br>
+                        <div class="input field">
+                            <label>Status:</label>
+                            <input type="text" name="status_teacher" placeholder="Status: ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <button type="submit">Cadastrar</button>
+    </form>
+</div>
+
+
+{% for teacher in data %}
+{{teacher.1}}
+<form action='/deletetea/{{teacher.2}}' method="POST">
+    <button>DELETAR</button>
+</form>
+
+<a href="/updatetea/{{teacher.2}}">atualizar</a>
+<br>
+{% else %}
+NÃO TEM PRODUTOS CADASTRADOS
+
+{% endfor %}
+
+{% endblock %}
