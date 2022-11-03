@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<h2>Bem vindo, {{username}}. </h2>
+<a href="{{url_for('logout')}}">Logout</a>
 <form action="/teacher">
     <button name="teacherBtn" type="submit">Cadastrar Professor</button>
 </form>
