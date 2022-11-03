@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, redirect, flash, session, url_for
 from src.database import mysql
+from bcrypt import *
+
 
 app = Flask(__name__)
 
-app.config.from_mapping(
-    SECRET_KEY='development'
-)
+app.secret_key = 'secreto'
 
 
+@app.route("/index")
 @app.route("/")
 def homepage():
     return render_template("public/loginForm.html")
@@ -20,33 +21,37 @@ def login():
         username = request.form['username']
         password = request.form['password']
         with mysql.cursor() as cur:
-            cur.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password,))
+            cur.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
             account = cur.fetchone()
             if account:
                 session['loggedin'] = True
-                session['id_accounts'] = account['id_accounts']
-                session['username'] = account['username']
-                msg = 'Logado com sucesso'
-                return render_template('public/menuForm.html', msg=msg)
+                session['id'] = account[0]
+                session['username'] = account[1]
+                return redirect(url_for('menu'))
             else:
                 msg = 'Não é um adm, kekw'
-        return render_template('public/loginForm.html', msg=msg)
+    return render_template('public/loginForm.html', msg=msg)
 
 
-@app.route("/index")
-def index():
-    if 'loggedin' in session:
-        return render_template("public/loginForm.html")
+@app.route("/menu")
+def menu():
+    return render_template('public/menuForm.html', username=session['username'])
+
+
+@app.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
     return redirect(url_for('login'))
 
 
 @app.route("/teacher", methods=['GET', 'POST'])
 def teachers():
-    if 'loggedin' in session:
-        if request.method == "GET":
-            with mysql.cursor() as cur:
-                cur.execute("SELECT * FROM teachers")
-                data = cur.fetchall()
+    if request.method == "GET":
+        with mysql.cursor() as cur:
+            cur.execute("SELECT * FROM teachers")
+            data = cur.fetchall()
             return render_template('public/teacherForm.html', data=data)
     return redirect(url_for('login'))
 
