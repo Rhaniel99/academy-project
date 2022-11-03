@@ -1,0 +1,14 @@
+{% for teacher in data %}
+{{teacher.1}}
+<form action='/deletetea/{{teacher.2}}' method="POST">
+    <button>DELETAR</button>
+</form>
+
+<a href="/updatetea/{{teacher.2}}">atualizar</a>
+<br>
+{% else %}
+NÃO TEM PRODUTOS CADASTRADOS
+
+{% endfor %}
+
+{% endblock %}
