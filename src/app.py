@@ -1,3 +1,4 @@
+import bcrypt
 from flask import Flask, render_template, request, redirect, flash, session, url_for
 from src.database import mysql
 from bcrypt import *
@@ -5,7 +6,7 @@ from bcrypt import *
 
 app = Flask(__name__)
 
-app.secret_key = 'secreto'
+
 
 
 @app.route("/index")
@@ -19,15 +20,16 @@ def login():
     msg = ''
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
-        password = request.form['password']
+        password = request.form['password'].encode('utf-8')
         with mysql.cursor() as cur:
             cur.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
             account = cur.fetchone()
-            if account:
-                session['loggedin'] = True
-                session['id'] = account[0]
-                session['username'] = account[1]
-                return redirect(url_for('menu'))
+            if len(account) > 0:
+                if bcrypt.hashpw(password,  account[2].encode('utf-8')) == account[2].encode('utf-8'):
+                    session['loggedin'] = True
+                    session['id'] = account[0]
+                    session['username'] = account[1]
+                    return redirect(url_for('menu'))
             else:
                 msg = 'Não é um adm, kekw'
     return render_template('public/loginForm.html', msg=msg)
@@ -46,13 +48,13 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/teacher", methods=['GET', 'POST'])
+@app.route("/teacher", methods=['GET'])
 def teachers():
     if request.method == "GET":
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM teachers")
             data = cur.fetchall()
-            return render_template('public/teacherForm.html', data=data)
+            return render_template('public/teacherForm.html', username=session['username'],  data=data)
     return redirect(url_for('login'))
 
 
@@ -82,7 +84,7 @@ def regteacher():
             except:
                 flash('Não foi inserido!', 'error')
             return redirect('/teacher')
-    return render_template("public/teacherForm.html")
+    return render_template("public/teacherForm.html", username=session['username'])
 
 
 @app.route("/deletetea/<int:reg_teacher>", methods=['POST'])
@@ -100,7 +102,7 @@ def updatetea(reg_teacher):
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM teachers WHERE reg_teacher =%s ", (reg_teacher,))
             onetea = cur.fetchone()
-            return render_template('public/teacherupForm.html', onetea=onetea)
+            return render_template('public/teacherupForm.html', onetea=onetea,username=session['username'] )
 
     elif request.method == "POST":
         full_n_teacher = request.form['full_n_teacher']
@@ -123,7 +125,7 @@ def updatetea(reg_teacher):
             return redirect('/teacher')
 
 
-@app.route("/course", methods=['GET', 'POST'])
+@app.route("/course", methods=['GET'])
 def course():
     if request.method == "GET":
         with mysql.cursor() as cur:
@@ -131,6 +133,10 @@ def course():
             data = cur.fetchall()
         return render_template('public/courseForm.html', data=data)
 
+
+
+@app.route("/regcourse", methods=['POST'])
+def regcourse():
     if request.method == "POST":
         full_n_course = request.form['full_n_course']
         short_n_course = request.form['short_n_course']
