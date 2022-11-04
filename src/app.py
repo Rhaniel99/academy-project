@@ -1,8 +1,5 @@
-import bcrypt
 from flask import Flask, render_template, request, redirect, flash, session, url_for
 from src.database import mysql
-from bcrypt import *
-
 
 app = Flask(__name__)
 
@@ -23,7 +20,10 @@ def login():
             cur.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
             account = cur.fetchone()
             if len(account) > 0:
+<<<<<<< HEAD
                 #if bcrypt.hashpw(password,  account[2].encode('utf-8')) == account[2].encode('utf-8'):
+=======
+>>>>>>> a0a6191dc535d26fbaff99c0dce5ade0f6385567
                 session['loggedin'] = True
                 session['id'] = account[0]
                 session['username'] = account[1]
@@ -45,9 +45,9 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('login'))
 
-
+# >>>>>>>>>>>>>>>>>>> TEACHER <<<<<<<<<<<<<<<<<<<<<<<<<<<
 @app.route("/teacher", methods=['GET'])
-def teachers():
+def teacher():
     if request.method == "GET":
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM teachers")
@@ -100,7 +100,7 @@ def updatetea(reg_teacher):
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM teachers WHERE reg_teacher =%s ", (reg_teacher,))
             onetea = cur.fetchone()
-            return render_template('public/teacherupForm.html', onetea=onetea,username=session['username'] )
+            return render_template('public/teacherupForm.html', onetea=onetea, username=session['username'])
 
     elif request.method == "POST":
         full_n_teacher = request.form['full_n_teacher']
@@ -122,15 +122,14 @@ def updatetea(reg_teacher):
             cur.connection.commit()
             return redirect('/teacher')
 
-
+# >>>>>>>>>>>>>>>>>>> COURSE <<<<<<<<<<<<<<<<<<<<<<<<<<<
 @app.route("/course", methods=['GET'])
 def course():
     if request.method == "GET":
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM course")
             data = cur.fetchall()
-        return render_template('public/courseForm.html', data=data)
-
+        return render_template('public/courseForm.html', data=data, username=session['username'])
 
 @app.route("/regcourse", methods=['POST'])
 def regcourse():
@@ -153,7 +152,15 @@ def regcourse():
             return redirect('/course')
     return render_template('public/courseForm.html')
 
+@app.route("/updatetea/<int:reg_teacher>", methods=['GET', 'POST'])
+def updatetea(reg_teacher):
+    if request.method == "GET":
+        with mysql.cursor() as cur:
+            cur.execute("SELECT * FROM teachers WHERE reg_teacher =%s ", (reg_teacher,))
+            onetea = cur.fetchone()
+            return render_template('public/teacherupForm.html', onetea=onetea, username=session['username'])
 
+<<<<<<< HEAD
 @app.route("/deletecour/<int:id_course>", methods=['POST'])           #delet-----------------------
 def deletecour(id_course):
     if request.method == "POST":
@@ -164,12 +171,37 @@ def deletecour(id_course):
 
 
 @app.route("/classe", methods=['GET'])                              #classe----------------------------
+=======
+    elif request.method == "POST":
+        full_n_teacher = request.form['full_n_teacher']
+        regtea = request.form['register_teacher']
+        hist_vh_teacher = request.form['hist_vh_teacher']
+        tittle_teacher = request.form['tittle_teacher']
+        reg_w_teacher = request.form['reg_w_teacher']
+        hiring_d_teacher = request.form['hiring_d_teacher']
+        close_d_teacher = request.form['close_d_teacher']
+        status_teacher = request.form['status_teacher']
+
+        with mysql.cursor() as cur:
+            cur.execute("UPDATE teachers SET full_n_teacher = %s, reg_teacher = %s, hist_vh_teacher = %s, "
+                        "tittle_teacher = %s, regime_w_teacher = %s, d_hiring_teacher = %s, d_close_teacher = %s, "
+                        "status_teacher = %s  WHERE reg_teacher = %s ",
+                        (full_n_teacher, regtea, hist_vh_teacher, tittle_teacher, reg_w_teacher,
+                         hiring_d_teacher,
+                         close_d_teacher, status_teacher, reg_teacher))
+            cur.connection.commit()
+            return redirect('/teacher')
+
+
+# >>>>>>>>>>>>>>>>>>> CLASS <<<<<<<<<<<<<<<<<<<<<<<<<<<
+@app.route("/classe", methods=['GET'])
+>>>>>>> a0a6191dc535d26fbaff99c0dce5ade0f6385567
 def classe():
     if request.method == "GET":
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM class")
             data = cur.fetchall()
-        return render_template('public/classForm.html', data=data)
+        return render_template('public/classForm.html', data=data, username=session['username'])
 
 
 @app.route("/regclasse", methods=['POST'])
@@ -201,9 +233,15 @@ def regclasse():
             return redirect('/classe')
     return render_template("public/classForm.html")
 
+<<<<<<< HEAD
 
 @app.route("/discipline", methods=['GET'])                 #discipliners
 def discipline():
+=======
+# >>>>>>>>>>>>>>>>>>> DISCIPLINE <<<<<<<<<<<<<<<<<<<<<<<<<<<
+@app.route("/discipline", methods=['GET', 'POST'])
+def discipliners():
+>>>>>>> a0a6191dc535d26fbaff99c0dce5ade0f6385567
     if request.method == "GET":
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM discipline")
