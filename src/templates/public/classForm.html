@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/regclasse" method="POST">
+<form action="regclasse" method="POST">
     <input type="text" name="institution" placeholder="Digite o nome da instituição:  ">
     <input type="number" name="course" placeholder="Digite o nome do curso: ">
     <input type="number" name="status_class" placeholder="Qual é o status da turma?">
@@ -18,6 +18,10 @@
 
 {% for class in data %}
 {{class.1}}
+<form action='/deleteclasse/{{class.0}}' method="POST">
+    <button>DELETAR</button>
+</form>
+
 {{class.4}}
 {% endfor %}
 

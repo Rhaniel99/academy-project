@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS institution_academy(
 
 CREATE TABLE IF NOT EXISTS discipline(
     id_discipline int NOT NULL AUTO_INCREMENT,
-    name_disclipline VARCHAR(30),
+    name_discipline VARCHAR(30),
     discipline_workload_teory TIME,
     discipline_workload_practice TIME,
     discipline_workload_online TIME,
