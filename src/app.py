@@ -1,32 +1,12 @@
 from flask import Flask, render_template, request, redirect, flash, session, url_for
 from src.database import mysql
-
+from src.routes.routes import *
 app = Flask(__name__)
 
 
-@app.route("/index")
-@app.route("/")
-def homepage():
-    return render_template("public/loginForm.html")
-
-
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-    msg = ''
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        username = request.form['username']
-        password = request.form['password'].encode('utf-8')
-        with mysql.cursor() as cur:
-            cur.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
-            account = cur.fetchone()
-            if len(account) > 0:
-                session['loggedin'] = True
-                session['id'] = account[0]
-                session['username'] = account[1]
-                return redirect(url_for('menu'))
-            else:
-                msg = 'Não é um adm, kekw'
-    return render_template('public/loginForm.html', msg=msg)
+app.add_url_rule(routes["index_route"], view_func=routes["indexcontroller"])
+app.add_url_rule(routes["insert_route_teacher"], view_func=routes["insert_controller_teacher"])
+app.add_url_rule(routes["delete_route_teacher"], view_func=routes["delete_controller_teacher"])
 
 
 @app.route("/menu")
@@ -39,56 +19,7 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return redirect(url_for('login'))
-
-
-# Teacher
-@app.route("/teacher", methods=['GET'])
-def teacher():
-    if request.method == "GET":
-        with mysql.cursor() as cur:
-            cur.execute("SELECT * FROM teachers")
-            data = cur.fetchall()
-            return render_template('public/teacherForm.html', username=session['username'], data=data)
-    return redirect(url_for('login'))
-
-
-@app.route("/regteacher", methods=['POST'])
-def regteacher():
-    if request.method == "POST":
-        full_n_teacher = request.form['full_n_teacher']
-        register_teacher = request.form['register_teacher']
-        hist_vh_teacher = request.form['hist_vh_teacher']
-        tittle_teacher = request.form['tittle_teacher']
-        reg_w_teacher = request.form['reg_w_teacher']
-        hiring_d_teacher = request.form['hiring_d_teacher']
-        close_d_teacher = request.form['close_d_teacher']
-        status_teacher = request.form['status_teacher']
-
-        with mysql.cursor() as cur:
-            try:
-                cur.execute("INSERT INTO teachers(full_n_teacher, reg_teacher, hist_vh_teacher, tittle_teacher, "
-                            "regime_w_teacher, d_hiring_teacher, d_close_teacher, status_teacher) VALUES (%s, %s, %s, "
-                            "%s, "
-                            "%s, %s, %s, %s)",
-                            (full_n_teacher, register_teacher, hist_vh_teacher, tittle_teacher, reg_w_teacher,
-                             hiring_d_teacher,
-                             close_d_teacher, status_teacher))
-                cur.connection.commit()
-                flash('Inserido com sucesso!', 'success')
-            except:
-                flash('Não foi inserido!', 'error')
-            return redirect('/teacher')
-    return render_template("public/teacherForm.html", username=session['username'])
-
-
-@app.route("/deletetea/<int:reg_teacher>", methods=['POST'])
-def deletetea(reg_teacher):
-    if request.method == "POST":
-        with mysql.cursor() as cur:
-            cur.execute("DELETE FROM teachers WHERE reg_teacher = %s ", (reg_teacher,))
-            cur.connection.commit()
-            return redirect('/teacher')
+    return redirect(url_for('Index'))
 
 
 @app.route("/updatetea/<int:reg_teacher>", methods=['GET', 'POST'])
