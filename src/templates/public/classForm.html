@@ -12,17 +12,17 @@
     <input type="text" name="matrix_curriculum" placeholder="Insira a matriz curricular: ">
     <input type="text" name="turn_class" placeholder="Insira o turno: ">
     <input type="text" name="series_class" placeholder="Digite a série: ">
-
     <button type="submit">Cadastrar</button>
 </form>
 
 {% for class in data %}
 {{class.1}}
+<br>
+{{class.4}}
 <form action='/deleteclasse/{{class.0}}' method="POST">
     <button>DELETAR</button>
 </form>
 
-{{class.4}}
 {% endfor %}
 
 

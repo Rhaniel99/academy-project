@@ -41,6 +41,7 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('login'))
 
+
 # Teacher
 @app.route("/teacher", methods=['GET'])
 def teacher():
@@ -48,7 +49,7 @@ def teacher():
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM teachers")
             data = cur.fetchall()
-            return render_template('public/teacherForm.html', username=session['username'],  data=data)
+            return render_template('public/teacherForm.html', username=session['username'], data=data)
     return redirect(url_for('login'))
 
 
@@ -118,6 +119,7 @@ def updatetea(reg_teacher):
             cur.connection.commit()
             return redirect('/teacher')
 
+
 # Course
 @app.route("/course", methods=['GET'])
 def course():
@@ -126,6 +128,7 @@ def course():
             cur.execute("SELECT * FROM course")
             data = cur.fetchall()
         return render_template('public/courseForm.html', data=data, username=session['username'])
+
 
 @app.route("/regcourse", methods=['POST'])
 def regcourse():
@@ -148,6 +151,7 @@ def regcourse():
             return redirect('/course')
     return render_template('public/courseForm.html')
 
+
 @app.route("/deletecour/<int:id_course>", methods=['POST'])
 def deletecour(id_course):
     if request.method == "POST":
@@ -166,35 +170,34 @@ def classe():
             data = cur.fetchall()
         return render_template('public/classForm.html', data=data, username=session['username'])
 
-@app.route("/regclasse", methods=['POST'])
-def reglasse():
-        if request.method == "POST":
-            institution = request.form['institution']
-            course = request.form['course']
-            status_class = request.form['status_class']
-            type_class = request.form['type_class']
-            expected_numb_stud = request.form['expected_numb_stud']
-            enrolled_numb_stud = request.form['enrolled_numb_stud']
-            semester = request.form['semester']
-            matrix_curriculum = request.form['matrix_curriculum']
-            turn_class = request.form['turn_class']
-            series_class = request.form['series_class']
 
-            with mysql.cursor() as cur:
-                try:
-                    cur.execute(
-                        "INSERT INTO class(institution, course,status_class, type_class, expected_numb_stud, "
-                        "enrolled_numb_stud, semester, matrix_curriculum, turn_class, series_class ) VALUES (%s, %s, %s, "
-                        "%s, %s, %s, %s, %s, %s, %s)",
-                        (
-                        institution, course, status_class, type_class, expected_numb_stud, enrolled_numb_stud, semester,
-                        matrix_curriculum, turn_class, series_class))
-                    cur.connection.commit()
-                    flash('Inserido com sucesso!', 'success')
-                except:
-                    flash('Não foi inserido!', 'error')
-                return redirect('/classe')
-        return render_template("public/classForm.html")
+@app.route("/regclasse", methods=['POST'])
+def regclasse():
+    if request.method == "POST":
+        institution = request.form['institution']
+        course = request.form['course']
+        status_class = request.form['status_class']
+        type_class = request.form['type_class']
+        expected_numb_stud = request.form['expected_numb_stud']
+        enrolled_numb_stud = request.form['enrolled_numb_stud']
+        semester = request.form['semester']
+        matrix_curriculum = request.form['matrix_curriculum']
+        turn_class = request.form['turn_class']
+        series_class = request.form['series_class']
+        with mysql.cursor() as cur:
+            try:
+                cur.execute(
+                    "INSERT INTO class(institution, course, status_class, type_class, expected_numb_stud, "
+                    "enrolled_numb_stud, semester, matrix_curriculum, turn_class, series_class ) VALUES (%s, %s, %s, "
+                    "%s, %s, %s, %s, %s, %s, %s)",
+                    (institution, course, status_class, type_class, expected_numb_stud, enrolled_numb_stud, semester,
+                     matrix_curriculum, turn_class, series_class))
+                cur.connection.commit()
+                flash('Inserido com sucesso!', 'success')
+            except:
+                flash('Não foi inserido!', 'error')
+            return redirect('/classe')
+    return render_template("public/classForm.html")
 
 
 @app.route("/deleteclasse/<int:id_class>", methods=['POST'])
@@ -229,7 +232,7 @@ def regdiscipline():
                 cur.execute(
                     "INSERT INTO discipline( name_discipline, discipline_workload_teory, "
                     "discipline_workload_practice,discipline_workload_online,discipline_workload_total ) VALUES (%s, "
-                    "%s, %s, %s, %s, %s)",
+                    "%s, %s, %s, %s)",
                     (name_discipline, discipline_workload_teory, discipline_workload_practice,
                      discipline_workload_online, discipline_workload_total))
                 cur.connection.commit()
@@ -244,6 +247,6 @@ def regdiscipline():
 def deletedisci(id_discipline):
     if request.method == "POST":
         with mysql.cursor() as cur:
-            cur.execute("DELETE FROM discipline WHERE id_course = %s ", (id_discipline,))
+            cur.execute("DELETE FROM discipline WHERE id_discipline = %s ", (id_discipline,))
             cur.connection.commit()
             return redirect('/discipline')
