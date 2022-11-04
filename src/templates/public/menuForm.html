@@ -3,7 +3,7 @@
 
 <h2>Bem vindo, {{username}}. </h2>
 <a href="{{url_for('logout')}}">Logout</a>
-<form action="/teacher">
+<form action="{{url_for('Teacher')}}">
     <button name="teacherBtn" type="submit">Cadastrar Professor</button>
 </form>
 

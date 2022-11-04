@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <header>Cadastro de Professor(a)</header>
-    <form action="regteacher" method="POST">
+    <form action="{{ url_for('Teacher')}}" method="POST">
         <div class="form first">
             <div class="details personal">
                 <span class="title">Informações do(a) professor(a)</span><br><br>
@@ -67,7 +67,7 @@
 
 {% for teacher in data %}
 {{teacher.1}}
-<form action='/deletetea/{{teacher.2}}' method="POST">
+<form action='/delete/teacher/{{teacher.0}}' method="POST">
     <button>DELETAR</button>
 </form>
 
