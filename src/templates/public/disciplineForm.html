@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/discipline" method="POST">
-    <input type="text" name="'name_disclipline" placeholder="Digite o nome da disciplina: ">
+<form action="regdiscipline" method="POST">
+    <input type="text" name="name_discipline" placeholder="Digite o nome da disciplina: ">
     <input type="number" name="discipline_workload_teory" placeholder="Insira a carga horária teórica: ">
     <input type="number" name="discipline_workload_practice" placeholder="Insira a carga horária prática: ">
     <input type="number" name="discipline_workload_online" placeholder="Insira a carga horária online:">
@@ -12,8 +12,11 @@
 </form>
 
 {% for discipline in data %}
-{{teacher.1}}
-{{teacher.4}}
+{{discipline.1}}
+<form action='/deletedisci/{{discipline.0}}' method="POST">
+    <button>DELETAR</button>
+</form>
+{{discipline.4}}
 {% endfor %}
 
 

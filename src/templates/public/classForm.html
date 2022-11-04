@@ -18,6 +18,10 @@
 
 {% for class in data %}
 {{class.1}}
+<form action='/deleteclasse/{{class.0}}' method="POST">
+    <button>DELETAR</button>
+</form>
+
 {{class.4}}
 {% endfor %}
 

@@ -20,6 +20,10 @@ def login():
             cur.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
             account = cur.fetchone()
             if len(account) > 0:
+<<<<<<< HEAD
+                #if bcrypt.hashpw(password,  account[2].encode('utf-8')) == account[2].encode('utf-8'):
+=======
+>>>>>>> a0a6191dc535d26fbaff99c0dce5ade0f6385567
                 session['loggedin'] = True
                 session['id'] = account[0]
                 session['username'] = account[1]
@@ -127,7 +131,6 @@ def course():
             data = cur.fetchall()
         return render_template('public/courseForm.html', data=data, username=session['username'])
 
-
 @app.route("/regcourse", methods=['POST'])
 def regcourse():
     if request.method == "POST":
@@ -157,6 +160,18 @@ def updatetea(reg_teacher):
             onetea = cur.fetchone()
             return render_template('public/teacherupForm.html', onetea=onetea, username=session['username'])
 
+<<<<<<< HEAD
+@app.route("/deletecour/<int:id_course>", methods=['POST'])           #delet-----------------------
+def deletecour(id_course):
+    if request.method == "POST":
+        with mysql.cursor() as cur:
+            cur.execute("DELETE FROM course WHERE id_course = %s ", (id_course,))
+            cur.connection.commit()
+            return redirect('/course')
+
+
+@app.route("/classe", methods=['GET'])                              #classe----------------------------
+=======
     elif request.method == "POST":
         full_n_teacher = request.form['full_n_teacher']
         regtea = request.form['register_teacher']
@@ -180,6 +195,7 @@ def updatetea(reg_teacher):
 
 # >>>>>>>>>>>>>>>>>>> CLASS <<<<<<<<<<<<<<<<<<<<<<<<<<<
 @app.route("/classe", methods=['GET'])
+>>>>>>> a0a6191dc535d26fbaff99c0dce5ade0f6385567
 def classe():
     if request.method == "GET":
         with mysql.cursor() as cur:
@@ -217,17 +233,26 @@ def regclasse():
             return redirect('/classe')
     return render_template("public/classForm.html")
 
+<<<<<<< HEAD
+
+@app.route("/discipline", methods=['GET'])                 #discipliners
+def discipline():
+=======
 # >>>>>>>>>>>>>>>>>>> DISCIPLINE <<<<<<<<<<<<<<<<<<<<<<<<<<<
 @app.route("/discipline", methods=['GET', 'POST'])
 def discipliners():
+>>>>>>> a0a6191dc535d26fbaff99c0dce5ade0f6385567
     if request.method == "GET":
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM discipline")
             data = cur.fetchall()
         return render_template('public/disciplineForm.html', data=data)
 
+
+@app.route("/regdiscipline", methods=['POST'])
+def regdiscipline():
     if request.method == "POST":
-        name_disclipline = request.form[' name_disclipline']
+        name_discipline = request.form['name_discipline']
         discipline_workload_teory = request.form['discipline_workload_teory']
         discipline_workload_practice = request.form['discipline_workload_practice']
         discipline_workload_online = request.form['discipline_workload_online']
@@ -236,10 +261,10 @@ def discipliners():
         with mysql.cursor() as cur:
             try:
                 cur.execute(
-                    "INSERT INTO discipline( name_disclipline, discipline_workload_teory, "
+                    "INSERT INTO discipline( name_discipline, discipline_workload_teory, "
                     "discipline_workload_practice,discipline_workload_online,discipline_workload_total ) VALUES (%s, "
-                    "%s, %s, %s, %s, %s, %s, %s)",
-                    (name_disclipline, discipline_workload_teory, discipline_workload_practice,
+                    "%s, %s, %s, %s, %s)",
+                    (name_discipline, discipline_workload_teory, discipline_workload_practice,
                      discipline_workload_online, discipline_workload_total))
                 cur.connection.commit()
                 flash('Inserido com sucesso!', 'success')
@@ -247,3 +272,12 @@ def discipliners():
                 flash('Não foi inserido!', 'error')
             return redirect('/discipline')
     return render_template("public/disciplineForm.html")
+
+
+@app.route("/deletedisci/<int:id_discipline>", methods=['POST'])           #delet-----------------------
+def deletedisci(id_discipline):
+    if request.method == "POST":
+        with mysql.cursor() as cur:
+            cur.execute("DELETE FROM discipline WHERE id_course = %s ", (id_discipline,))
+            cur.connection.commit()
+            return redirect('/discipline')
