@@ -7,13 +7,9 @@ app = Flask(__name__)
 app.add_url_rule(routes["index_route"], view_func=routes["indexcontroller"])
 app.add_url_rule(routes["insert_route_teacher"], view_func=routes["insert_controller_teacher"])
 app.add_url_rule(routes["delete_route_teacher"], view_func=routes["delete_controller_teacher"])
-<<<<<<< HEAD
+app.add_url_rule(routes["update_route_teacher"], view_func=routes["update_controller_teacher"])
 app.add_url_rule(routes["insert_route_course"], view_func=routes["insert_controller_course"])
 app.add_url_rule(routes["delete_route_course"], view_func=routes["delete_controller_course"])
-=======
-app.add_url_rule(routes["update_route_teacher"], view_func=routes["update_controller_teacher"])
-
->>>>>>> 2f77beae1591b5444b0b7d5b5f6e76257bd4ca84
 
 @app.route("/menu")
 def menu():
@@ -26,77 +22,6 @@ def logout():
     session.pop('id', None)
     session.pop('username', None)
     return redirect(url_for('Index'))
-
-
-<<<<<<< HEAD
-@app.route("/updatetea/<int:reg_teacher>", methods=['GET', 'POST'])
-def updatetea(reg_teacher):
-    if request.method == "GET":
-        with mysql.cursor() as cur:
-            cur.execute("SELECT * FROM teachers WHERE reg_teacher =%s ", (reg_teacher,))
-            onetea = cur.fetchone()
-            return render_template('public/teacherupForm.html', onetea=onetea, username=session['username'])
-
-    elif request.method == "POST":
-        full_n_teacher = request.form['full_n_teacher']
-        regtea = request.form['register_teacher']
-        hist_vh_teacher = request.form['hist_vh_teacher']
-        tittle_teacher = request.form['tittle_teacher']
-        reg_w_teacher = request.form['reg_w_teacher']
-        hiring_d_teacher = request.form['hiring_d_teacher']
-        close_d_teacher = request.form['close_d_teacher']
-        status_teacher = request.form['status_teacher']
-
-        with mysql.cursor() as cur:
-            cur.execute("UPDATE teachers SET full_n_teacher = %s, reg_teacher = %s, hist_vh_teacher = %s, "
-                        "tittle_teacher = %s, regime_w_teacher = %s, d_hiring_teacher = %s, d_close_teacher = %s, "
-                        "status_teacher = %s  WHERE reg_teacher = %s ",
-                        (full_n_teacher, regtea, hist_vh_teacher, tittle_teacher, reg_w_teacher,
-                         hiring_d_teacher,
-                         close_d_teacher, status_teacher, reg_teacher))
-            cur.connection.commit()
-            return redirect('/teacher')
-=======
-# Course
-@app.route("/course", methods=['GET'])
-def course():
-    if request.method == "GET":
-        with mysql.cursor() as cur:
-            cur.execute("SELECT * FROM course")
-            data = cur.fetchall()
-        return render_template('public/courseForm.html', data=data, username=session['username'])
-
-
-@app.route("/regcourse", methods=['POST'])
-def regcourse():
-    if request.method == "POST":
-        full_n_course = request.form['full_n_course']
-        short_n_course = request.form['short_n_course']
-        modal_course = request.form['modal_course']
-        class_course = request.form['class_course']
-
-        with mysql.cursor() as cur:
-            try:
-                cur.execute(
-                    "INSERT INTO course(full_n_course, short_n_course, modal_course, class_course) VALUES (%s, %s, "
-                    "%s, %s)",
-                    (full_n_course, short_n_course, modal_course, class_course))
-                cur.connection.commit()
-                flash('Inserido com sucesso!', 'sucess')
-            except:
-                flash('Não foi inserido!', 'error')
-            return redirect('/course')
-    return render_template('public/courseForm.html')
-
-
-@app.route("/deletecour/<int:id_course>", methods=['POST'])
-def deletecour(id_course):
-    if request.method == "POST":
-        with mysql.cursor() as cur:
-            cur.execute("DELETE FROM course WHERE id_course = %s ", (id_course,))
-            cur.connection.commit()
-            return redirect('/course')
->>>>>>> 2f77beae1591b5444b0b7d5b5f6e76257bd4ca84
 
 
 # Class
