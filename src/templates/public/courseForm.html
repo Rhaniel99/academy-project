@@ -3,7 +3,7 @@
 <div class="container">
     <header>Cadastro de cursos</header>
 
-    <form action="regcourse" method="post">
+    <form action="{{ url_for('Course')}}" method="POST">
         <div class="form first">
             <div class="details personal">
                 <span class="title">Informações do curso</span><br><br>
@@ -42,7 +42,7 @@
 
 {% for course in data %}
 {{course.1}}
-<form action='/deletecour/{{course.0}}' method="POST">
+<form action='/delete/course/{{course.0}}' method="POST">
     <button>DELETAR</button>
 </form>
 
