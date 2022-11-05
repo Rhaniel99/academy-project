@@ -18,7 +18,8 @@ class IndexController(MethodView):
                 session['loggedin'] = True
                 session['id'] = account[0]
                 session['username'] = account[1]
-                return redirect(url_for('menu'))
+                return redirect(url_for('Menu'))
             else:
                 msg = 'Não é um adm, kekw'
             return render_template('public/loginForm.html', msg=msg)
+

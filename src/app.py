@@ -10,10 +10,8 @@ app.add_url_rule(routes["delete_route_teacher"], view_func=routes["delete_contro
 app.add_url_rule(routes["update_route_teacher"], view_func=routes["update_controller_teacher"])
 app.add_url_rule(routes["insert_route_course"], view_func=routes["insert_controller_course"])
 app.add_url_rule(routes["delete_route_course"], view_func=routes["delete_controller_course"])
-
-@app.route("/menu")
-def menu():
-    return render_template('public/menuForm.html', username=session['username'])
+app.add_url_rule(routes["update_route_course"], view_func=routes["update_controller_course"])
+app.add_url_rule(routes["menu_route"], view_func=routes["menucontroller"])
 
 
 @app.route('/logout')
