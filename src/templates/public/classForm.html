@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="regclasse" method="POST">
+<form action="{{ url_for('Class')}}" method="POST">
     <input type="text" name="institution" placeholder="Digite o nome da instituição:  ">
     <input type="text" name="course" placeholder="Digite o nome do curso: ">
     <input type="text" name="status_class" placeholder="Qual é o status da turma?">
@@ -19,10 +19,15 @@
 {{class.1}}
 <br>
 {{class.4}}
-<form action='/deleteclasse/{{class.0}}' method="POST">
+<form action='/delete/class/{{class.0}}' method="POST">
     <button>DELETAR</button>
 </form>
 
+<a href="/update/class/{{class.0}}">atualizar</a>
+<br>
+
+{% else %}
+NÃO TEM PRODUTOS CADASTRADOS
 {% endfor %}
 
 
