@@ -10,6 +10,11 @@ app.add_url_rule(routes["delete_route_teacher"], view_func=routes["delete_contro
 app.add_url_rule(routes["update_route_teacher"], view_func=routes["update_controller_teacher"])
 app.add_url_rule(routes["insert_route_course"], view_func=routes["insert_controller_course"])
 app.add_url_rule(routes["delete_route_course"], view_func=routes["delete_controller_course"])
+app.add_url_rule(routes["insert_route_class"], view_func=routes["insert_controller_class"])
+app.add_url_rule(routes["delete_route_class"], view_func=routes["delete_controller_class"])
+app.add_url_rule(routes["update_route_class"], view_func=routes["update_controller_class"])
+
+
 
 @app.route("/menu")
 def menu():
@@ -34,7 +39,7 @@ def classe():
         return render_template('public/classForm.html', data=data, username=session['username'])
 
 
-@app.route("/regclasse", methods=['POST'])
+'''@app.route("/regclasse", methods=['POST'])
 def regclasse():
     if request.method == "POST":
         institution = request.form['institution']
@@ -69,7 +74,7 @@ def deleteclasse(id_class):
         with mysql.cursor() as cur:
             cur.execute("DELETE FROM class WHERE id_class = %s ", (id_class,))
             cur.connection.commit()
-            return redirect('/classe')
+            return redirect('/classe')'''
 
 
 # Discipline
