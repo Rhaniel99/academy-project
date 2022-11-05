@@ -1,3 +1,4 @@
+from src.controllers.MenuController import *
 from src.controllers.CourseController import *
 from src.controllers.IndexController import *
 from src.controllers.TeacherController import *
@@ -9,4 +10,6 @@ routes = {
     "update_route_teacher": "/update/teacher/<int:id_teacher>", "update_controller_teacher": UpdateTeacherController.as_view("Update_Teacher"),
     "insert_route_course": "/insert/course", "insert_controller_course": CourseController.as_view("Course"),
     "delete_route_course": "/delete/course/<int:id_course>", "delete_controller_course": DeleteCourseController.as_view("Delete_Course"),
+    "update_route_course": "/update/course/<int:id_course>", "update_controller_course": UpdateCourseController.as_view("Update_Course"),
+    "menu_route": "/menu", "menucontroller": MenuController.as_view("Menu"),
 }

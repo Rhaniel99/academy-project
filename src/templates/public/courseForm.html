@@ -42,11 +42,14 @@
 
 {% for course in data %}
 {{course.1}}
+{{course.4}}
 <form action='/delete/course/{{course.0}}' method="POST">
     <button>DELETAR</button>
 </form>
-
-{{course.4}}
+<a href="/update/course/{{course.0}}">Atualizar</a>
+<br>
+{% else %}
+NÃO TEM PRODUTOS CADASTRADOS
 {% endfor %}
 
 
