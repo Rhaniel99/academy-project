@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="regdiscipline" method="POST">
+<form action="{{ url_for('Discipline')}}" method="POST">
     <input type="text" name="name_discipline" placeholder="Digite o nome da disciplina: ">
     <input type="number" name="discipline_workload_teory" placeholder="Insira a carga horária teórica: ">
     <input type="number" name="discipline_workload_practice" placeholder="Insira a carga horária prática: ">
@@ -13,12 +13,15 @@
 
 {% for discipline in data %}
 {{discipline.1}}
-<form action='/deletedisci/{{discipline.0}}' method="POST">
+<form action='/delete/discipline/{{discipline.0}}' method="POST">
     <button>DELETAR</button>
 </form>
-{{discipline.4}}
+
+<a href="/update/discipline/{{discipline.0}}">atualizar</a>
+<br>
+{% else %}
+NÃO TEM PRODUTOS CADASTRADOS
+
 {% endfor %}
-
-
 
 {% endblock %}

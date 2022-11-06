@@ -1,0 +1,17 @@
+ {% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="/update/discipline/{{onetea.0}}" method="POST">
+    <input type="text" name="name_discipline" value="{{onetea.1}}" placeholder="Digite o nome da disciplina: ">
+    <input type="number" name="discipline_workload_teory" value="{{onetea.2}}" placeholder="Insira a carga horária teórica: ">
+    <input type="number" name="discipline_workload_practice" value="{{onetea.3}}" placeholder="Insira a carga horária prática: ">
+    <input type="number" name="discipline_workload_online" value="{{onetea.4}}" placeholder="Insira a carga horária online:">
+    <input type="number" name=" discipline_workload_total" value="{{onetea.5}}" placeholder="Insira a carga horária total:">
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+
+{% endblock %}
