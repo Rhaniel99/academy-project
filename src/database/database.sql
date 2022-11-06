@@ -49,13 +49,16 @@ CREATE TABLE IF NOT EXISTS building(
     PRIMARY KEY(id_name)
 );
 
-CREATE TABLE IF NOT EXISTS planning(
+CREATE TABLE IF NOT EXISTS plannings(
+    id int NOT NULL AUTO_INCREMENT,
     semester FLOAT(6),
-    planning_class FLOAT(15),
-    planning_status VARCHAR(10),
-    planning_workload TIME,
+    class VARCHAR(15),
+    discipline VARCHAR(20),
+    teacher VARCHAR(30),
+    workload FLOAT(10),
     modalit_offering VARCHAR(30),
-    planning_subject VARCHAR (30)
+    status VARCHAR(10),
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS academic_period(
