@@ -3,6 +3,7 @@ from src.controllers.CourseController import *
 from src.controllers.IndexController import *
 from src.controllers.TeacherController import *
 from src.controllers.ClassController import *
+from src.controllers.DisciplineController import *
 
 routes = {
     "index_route": "/", "indexcontroller": IndexController.as_view("Index"),
@@ -16,4 +17,7 @@ routes = {
     "insert_route_class": "/insert/class", "insert_controller_class": ClassController.as_view("Class"),
     "delete_route_class": "/delete/class/<int:id_class>", "delete_controller_class": DeleteClassController.as_view("Delete_Class"),
     "update_route_class": "/update/class/<int:id_class>", "update_controller_class": UpdateClassController.as_view("Update_Class"),
+    "insert_route_discipline": "/insert/discipline", "insert_controller_discipline": DisciplineController.as_view("Discipline"),
+    "delete_route_discipline": "/delete/discipline/<int:id_discipline>", "delete_controller_discipline": DeleteDisciplineController.as_view("Delete_Discipline"),
+    "update_route_discipline": "/update/discipline/<int:id_discipline>", "update_controller_discipline": UpdateDisciplineController.as_view("Update_Discipline"),
 }
