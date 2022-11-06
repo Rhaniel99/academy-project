@@ -23,13 +23,16 @@ app.add_url_rule(routes["update_route_course"], view_func=routes["update_control
 app.add_url_rule(routes["insert_route_class"], view_func=routes["insert_controller_class"])
 app.add_url_rule(routes["delete_route_class"], view_func=routes["delete_controller_class"])
 app.add_url_rule(routes["update_route_class"], view_func=routes["update_controller_class"])
+app.add_url_rule(routes["insert_route_discipline"], view_func=routes["insert_controller_discipline"])
+app.add_url_rule(routes["delete_route_discipline"], view_func=routes["delete_controller_discipline"])
+app.add_url_rule(routes["update_route_discipline"], view_func=routes["update_controller_discipline"])
 app.add_url_rule(routes["insert_route_plan"], view_func=routes["insert_controller_plan"])
 app.add_url_rule(routes["delete_route_plan"], view_func=routes["delete_controller_plan"])
 app.add_url_rule(routes["update_route_plan"], view_func=routes["update_controller_plan"])
 
 
 # Discipline
-@app.route("/discipline", methods=['GET'])
+'''@app.route("/discipline", methods=['GET'])
 def discipliners():
     if request.method == "GET":
         with mysql.cursor() as cur:
@@ -68,4 +71,4 @@ def deletedisci(id_discipline):
         with mysql.cursor() as cur:
             cur.execute("DELETE FROM discipline WHERE id_discipline = %s ", (id_discipline,))
             cur.connection.commit()
-            return redirect('/discipline')
+            return redirect('/discipline')'''
