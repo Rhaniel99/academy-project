@@ -11,7 +11,7 @@
     <button name="courseBtn" type="submit">Cadastrar Curso</button>
 </form>
 
-<form action="/classe">
+<form action="{{url_for('Class')}}">
     <button name="classBtn" type="submit">Cadastrar Turma</button>
 </form>
 
@@ -21,6 +21,10 @@
 
 <form action="{{url_for('Discipline')}}">
     <button name="disciplineBtn" type="submit">Cadastrar Disciplina</button>
+</form>
+
+<form action="{{url_for('Planning')}}">
+    <button name="planBtn" type="submit">Cadastrar Planejamento</button>
 </form>
 
 {% endblock %}

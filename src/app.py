@@ -26,6 +26,9 @@ app.add_url_rule(routes["update_route_class"], view_func=routes["update_controll
 app.add_url_rule(routes["insert_route_discipline"], view_func=routes["insert_controller_discipline"])
 app.add_url_rule(routes["delete_route_discipline"], view_func=routes["delete_controller_discipline"])
 app.add_url_rule(routes["update_route_discipline"], view_func=routes["update_controller_discipline"])
+app.add_url_rule(routes["insert_route_plan"], view_func=routes["insert_controller_plan"])
+app.add_url_rule(routes["delete_route_plan"], view_func=routes["delete_controller_plan"])
+app.add_url_rule(routes["update_route_plan"], view_func=routes["update_controller_plan"])
 
 
 # Discipline
