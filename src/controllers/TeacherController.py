@@ -8,11 +8,7 @@ class TeacherController(MethodView):
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM teachers")
             data = cur.fetchall()
-
-            cur.execute("SELECT status_teacher FROM teachers")
-            status = cur.fetchall()
-
-            return render_template('public/teacherForm.html', username=session['username'], data=data, status=status)
+            return render_template('public/teacherForm.html', username=session['username'], data=data)
 
     def post(self):
         msg = ''
