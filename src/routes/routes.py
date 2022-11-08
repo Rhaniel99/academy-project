@@ -29,7 +29,6 @@ routes = {
     "insert_route_building": "/insert/build", "insert_controller_building": BuildingController.as_view("Building"),
     "delete_route_building": "/delete/build/<int:id>", "delete_controller_building": DeleteBuildController.as_view("Delete_Building"),
     "update_route_building": "/update/build/<int:id>", "update_controller_building": UpdateBuildController.as_view("Update_Building"),
-
     "insert_route_education": "/insert/edu", "insert_controller_education": EducacationInstController.as_view("EducationInstitution"),
     "delete_route_education": "/delete/edu/<int:id>", "delete_controller_education": DeleteEduInstController.as_view("Delete_Institution"),
     "update_route_education": "/update/edu/<int:id>", "update_controller_education": UpdateEduInstController.as_view("Update_Institution"),
