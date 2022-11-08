@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/update/matrix_curriculum/{{one.0}}" method="POST">
+    <input type="date" name="'date_start" value="{{one.1}}" placeholder="Insira o início da vigência: ">
+    <input type="number" name="cod" value="{{one.2}}" placeholder="Insira o código: ">
+    <input type="text" name="course" value="{{one.3}}" placeholder="Insira o curso: ">
+    <imput type="text" name="discipline" value="{{one.4}}" placeholder="Insira a disciplina: ">
+    <imput type="text" name="period" value="{{one.5}}" placeholder="Insira o período: ">
+    <button type="submit">Cadastrar</button>
+</form>
+{% endblock %}

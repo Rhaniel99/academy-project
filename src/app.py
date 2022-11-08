@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, session, url_for
-from src.database import mysql
+from flask import Flask
 from src.routes.routes import *
 app = Flask(__name__)
 
@@ -29,11 +28,15 @@ app.add_url_rule(routes["update_route_discipline"], view_func=routes["update_con
 app.add_url_rule(routes["insert_route_plan"], view_func=routes["insert_controller_plan"])
 app.add_url_rule(routes["delete_route_plan"], view_func=routes["delete_controller_plan"])
 app.add_url_rule(routes["update_route_plan"], view_func=routes["update_controller_plan"])
+app.add_url_rule(routes["insert_route_academic_period"], view_func=routes["insert_controller_academic_period"])
+app.add_url_rule(routes["delete_route_academic_period"], view_func=routes["delete_controller_academic_period"])
+app.add_url_rule(routes["update_route_academic_period"], view_func=routes["update_controller_academic_period"])
+app.add_url_rule(routes["insert_route_matrix_curriculum"], view_func=routes["insert_controller_matrix_curriculum"])
+app.add_url_rule(routes["delete_route_matrix_curriculum"], view_func=routes["delete_controller_matrix_curriculum"])
+app.add_url_rule(routes["update_rout_matrix_curriculum"], view_func=routes["update_controller_matrix_curriculum"])
 app.add_url_rule(routes["insert_route_building"], view_func=routes["insert_controller_building"])
 app.add_url_rule(routes["delete_route_building"], view_func=routes["delete_controller_building"])
 app.add_url_rule(routes["update_route_building"], view_func=routes["update_controller_building"])
 app.add_url_rule(routes["insert_route_education"], view_func=routes["insert_controller_education"])
 app.add_url_rule(routes["delete_route_education"], view_func=routes["delete_controller_education"])
 app.add_url_rule(routes["update_route_education"], view_func=routes["update_controller_education"])
-
-
