@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="/update/academic_period/{{onetea.0}}" method="POST">
+    <input type="text" name="academic_period_name" value="{{onetea.1}}" placeholder="Digite o período: ">
+    <input type="date" name="date_start" value="{{onetea.2}}" placeholder="Digite a data de início: ">
+    <input type="date" name="date_end" value="{{onetea.3}}" placeholder="Digite a data de término: ">
+    <input type="text" name="academic_period_description" value="{{onetea.4}}" placeholder="Insira uma descrição: ">
+
+
+    <button type="submit">Atualizar</button>
+</form>
+
+
+{% endblock %}

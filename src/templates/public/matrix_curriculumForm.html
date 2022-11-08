@@ -1,15 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="matrix_curriculum" method="POST">
-    <input type="number" name="'date_start" placeholder="Insira o início da vigência: ">
+<form action="{{ url_for('Matrix_curriculum')}}" method="POST">
+    <input type="date" name="'date_start" placeholder="Insira o início da vigência: ">
+    <input type="number" name="cod" placeholder="Insira o código: ">
     <input type="text" name="course" placeholder="Insira o curso: ">
+    <imput type="text" name="discipline" placeholder="Insira a disciplina: ">
+    <imput type="text" name="period" placeholder="Insira o período: ">
     <button type="submit">Cadastrar</button>
 </form>
 
 {% for matrix_curriculum in data %}
-{{teacher.1}}
-{{teacher.4}}
+{{matrix_curriculum.1}}
+<br>
+{{matrix_curriculum.4}}
+<form action='/delete/matrix_curriculum/{{matrix_curriculum.0}}' method="POST">
+    <button>DELETAR</button>
+</form>
+
+<a href="/update/matrix_curriculum/{{class.0}}">atualizar</a>
+<br>
+
+{% else %}
+NÃO TEM MATRIZ CADASTRADA
 {% endfor %}
 
 

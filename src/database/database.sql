@@ -64,10 +64,12 @@ CREATE TABLE IF NOT EXISTS plannings(
 ); #
 
 CREATE TABLE IF NOT EXISTS academic_period(
-    academic_period_name FLOAT,
+    id_period int NOT NULL AUTO_INCREMENT,
+    academic_period_name VARCHAR(7),
     date_start DATE,
     date_end DATE,
     academic_period_description VARCHAR(50)
+    PRIMARY KEY(id_period)
 );
 
 
@@ -92,15 +94,12 @@ CREATE TABLE IF NOT EXISTS discipline(
 ); #
 
 CREATE TABLE IF NOT EXISTS matrix_curriculum(
-    id_matrix_curriculum int NOT NULL AUTO_INCREMENT,
-    date_start DATE,
-    course VARCHAR(30),
-    PRIMARY KEY(id_matrix_curriculum)
-)    id_course int NOT NULL AUTO_INCREMENT,
-    full_n_course VARCHAR (30) NOT NULL,
-    short_n_course VARCHAR (20),
-    modal_course VARCHAR (20) NOT NULL,
-    class_course VARCHAR (20) NOT NULL UNIQUE,
-    PRIMARY KEY(id_course)
+    id int NOT NULL AUTO_INCREMENT,
+    date_start DATE NOT NULL,
+    cod INT (9) NOT NULL,
+    course VARCHAR(30) NOT NULL,
+    discipline VARCHAR (30) NOT NULL,
+    period VARCHAR (7) NOT NULL,
+    PRIMARY KEY (id)
 
 );
