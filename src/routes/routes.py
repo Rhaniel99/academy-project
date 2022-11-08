@@ -33,7 +33,7 @@ routes = {
     "update_route_academic_period": "/update/academic_period/<int:id_period>", "update_controller_academic_period": UpdateAcademic_PeriodController.as_view("Update_Academic_Period"),
     "insert_route_matrix_curriculum": "/insert/matrix_curriculum", "insert_controller_matrix_curriculum": Matrix_CurriculumController.as_view("Matrix_Curriculum"),
     "delete_route_matrix_curriculum": "/delete/matrix_curriculum/<int:id>", "delete_controller_matrix_curriculum": DeleteMatrix_CurriculumController.as_view("Delete_Matrix_Curriculum"),
-    "update_rout_matrix_curriculum": "/update/matrix_curriculum/<int:id>", "update_matrix_curriculum": UpdateMatrix_CurriculumController.as_view("Update_Matrix_Curriculum"),
+    "update_route_matrix_curriculum": "/update/matrix_curriculum/<int:id>", "update_matrix_curriculum": UpdateMatrix_CurriculumController.as_view("Update_Matrix_Curriculum"),
     "insert_route_building": "/insert/build", "insert_controller_building": BuildingController.as_view("Building"),
     "delete_route_building": "/delete/build/<int:id>", "delete_controller_building": DeleteBuildController.as_view("Delete_Building"),
     "update_route_building": "/update/build/<int:id>", "update_controller_building": UpdateBuildController.as_view("Update_Building"),
