@@ -39,6 +39,7 @@ class DeleteMatrix_CurriculumController(MethodView):
             return redirect(url_for('Matrix_Curriculum'))
 
 
+
 class UpdateMatrix_CurriculumController(MethodView):
     def get(self, id):
         with mysql.cursor() as cur:

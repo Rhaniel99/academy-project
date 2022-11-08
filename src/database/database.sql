@@ -3,7 +3,9 @@ CREATE TABLE IF NOT EXISTS accounts(
     username VARCHAR (30) NOT NULL,
     password VARCHAR (100) NOT NULL,
     PRIMARY KEY(id_accounts)
-); #
+);
+
+# Rhanikas
 CREATE TABLE IF NOT EXISTS course(
     id_course int NOT NULL AUTO_INCREMENT,
     full_n_course VARCHAR (30) NOT NULL,
@@ -43,13 +45,15 @@ CREATE TABLE IF NOT EXISTS class(
     PRIMARY KEY(id_class)
 ); #
 
+
+# Melissas
 CREATE TABLE IF NOT EXISTS buildings(
     id int NOT NULL AUTO_INCREMENT,
     name_unity VARCHAR (30) NOT NULL,
     adress VARCHAR(100) NOT NULL,
     rooms INT (3),
     PRIMARY KEY(id)
-); #
+);
 
 CREATE TABLE IF NOT EXISTS plannings(
     id int NOT NULL AUTO_INCREMENT,
@@ -61,7 +65,7 @@ CREATE TABLE IF NOT EXISTS plannings(
     modalit_offering VARCHAR(30),
     status VARCHAR(10),
     PRIMARY KEY(id)
-); #
+);
 
 CREATE TABLE IF NOT EXISTS academic_period(
     id_period int NOT NULL AUTO_INCREMENT,
@@ -72,7 +76,7 @@ CREATE TABLE IF NOT EXISTS academic_period(
     PRIMARY KEY(id_period)
 );
 
-
+# Caio
 CREATE TABLE IF NOT EXISTS education_institution(
     id INT NOT NULL AUTO_INCREMENT,
     corporate_name VARCHAR(50) NOT NULL,
