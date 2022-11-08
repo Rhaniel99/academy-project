@@ -29,7 +29,12 @@ app.add_url_rule(routes["update_route_discipline"], view_func=routes["update_con
 app.add_url_rule(routes["insert_route_plan"], view_func=routes["insert_controller_plan"])
 app.add_url_rule(routes["delete_route_plan"], view_func=routes["delete_controller_plan"])
 app.add_url_rule(routes["update_route_plan"], view_func=routes["update_controller_plan"])
-
+app.add_url_rule(routes["insert_route_academic_period"], view_func=routes["insert_controller_academic_period"])
+app.add_url_rule(routes["delete_route_academic_period"], view_func=routes["delete_controller_academic_period"])
+app.add_url_rule(routes["update_route_academic_period"], view_func=routes["update_controller_academic_period"])
+app.add_url_rule(routes["insert_route_matrix_curriculum"], view_func=routes["insert_controller_matrix_curriculum"])
+app.add_url_rule(routes["delete_route_matrix_curriculum"], view_func=routes["delete_controller_matrix_curriculum"])
+app.add_url_rule(routes["update_rout_matrix_curriculum"], view_func=routes["update_controller_matrix_curriculum"])
 
 # Discipline
 '''@app.route("/discipline", methods=['GET'])
