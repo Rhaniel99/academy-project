@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="building" method="POST">
-    <input type="text" name="'adress" placeholder="Digite o endereço: ">
-
+<form action="{{ url_for('Building')}}" method="POST">
+    <input type="text" name="name_unity" placeholder="Digite o nome da unidade:">
+    <input type="text" name="adress" placeholder="Digite o endereço:">
+    <input type="text" name="rooms" placeholder="Digite a quantidade de salas:">
     <button type="submit">Cadastrar</button>
 </form>
 
 {% for building in data %}
-{{teacher.1}}
-{{teacher.4}}
+{{building.1}}
+{{building.4}}
+<form action='/delete/build/{{building.0}}' method="POST">
+    <button>DELETAR</button>
+</form>
+
+<a href="/update/build/{{building.0}}">atualizar</a>
+<br>
+{% else %}
+NÃO TEM PREDIOS
 {% endfor %}
-
-
-
 {% endblock %}

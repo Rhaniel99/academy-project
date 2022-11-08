@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS accounts(
     username VARCHAR (30) NOT NULL,
     password VARCHAR (100) NOT NULL,
     PRIMARY KEY(id_accounts)
-);
+); #
 CREATE TABLE IF NOT EXISTS course(
     id_course int NOT NULL AUTO_INCREMENT,
     full_n_course VARCHAR (30) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS course(
     class_course VARCHAR (20) NOT NULL UNIQUE,
     PRIMARY KEY(id_course)
 
-);
+); #
 
 CREATE TABLE IF NOT EXISTS teachers(
     id_teacher int NOT NULL AUTO_INCREMENT,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS teachers(
     d_close_teacher date,
     status_teacher enum ('ativo','inativo')
     PRIMARY KEY(id_teachers)
-);
+); #
 
 
 CREATE TABLE IF NOT EXISTS class(
@@ -41,13 +41,15 @@ CREATE TABLE IF NOT EXISTS class(
     turn_class VARCHAR(20),
     series_class VARCHAR(20),
     PRIMARY KEY(id_class)
-);
+); #
 
-CREATE TABLE IF NOT EXISTS building(
-    id_name int NOT NULL AUTO_INCREMENT,
-    adress VARCHAR(100),
-    PRIMARY KEY(id_name)
-);
+CREATE TABLE IF NOT EXISTS buildings(
+    id int NOT NULL AUTO_INCREMENT,
+    name_unity VARCHAR (30) NOT NULL,
+    adress VARCHAR(100) NOT NULL,
+    rooms INT (3),
+    PRIMARY KEY(id)
+); #
 
 CREATE TABLE IF NOT EXISTS plannings(
     id int NOT NULL AUTO_INCREMENT,
@@ -59,7 +61,7 @@ CREATE TABLE IF NOT EXISTS plannings(
     modalit_offering VARCHAR(30),
     status VARCHAR(10),
     PRIMARY KEY(id)
-);
+); #
 
 CREATE TABLE IF NOT EXISTS academic_period(
     id_period int NOT NULL AUTO_INCREMENT,
@@ -71,15 +73,15 @@ CREATE TABLE IF NOT EXISTS academic_period(
 );
 
 
-CREATE TABLE IF NOT EXISTS institution_academy(
-    company_name VARCHAR(50),
-    institution_name VARCHAR(50),
-    headquarters VARCHAR(15),
-    branch VARCHAR(15),
-    courses VARCHAR(30),
-    PRIMARY KEY(company_name)
-
-);
+CREATE TABLE IF NOT EXISTS education_institution(
+    id INT NOT NULL AUTO_INCREMENT,
+    corporate_name VARCHAR(50) NOT NULL,
+    institution_name VARCHAR(50) NOT NULL,
+    matrix VARCHAR(15),
+    affiliated VARCHAR(15),
+    course VARCHAR(30),
+    PRIMARY KEY(id)
+); #
 
 CREATE TABLE IF NOT EXISTS discipline(
     id_discipline int NOT NULL AUTO_INCREMENT,
@@ -89,7 +91,7 @@ CREATE TABLE IF NOT EXISTS discipline(
     discipline_workload_online TIME,
     discipline_workload_total TIME,
     PRIMARY KEY(id_discipline)
-);
+); #
 
 CREATE TABLE IF NOT EXISTS matrix_curriculum(
     id int NOT NULL AUTO_INCREMENT,

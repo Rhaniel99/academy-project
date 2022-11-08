@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, session, url_for
-from src.database import mysql
+from flask import Flask
 from src.routes.routes import *
 app = Flask(__name__)
 
@@ -35,45 +34,9 @@ app.add_url_rule(routes["update_route_academic_period"], view_func=routes["updat
 app.add_url_rule(routes["insert_route_matrix_curriculum"], view_func=routes["insert_controller_matrix_curriculum"])
 app.add_url_rule(routes["delete_route_matrix_curriculum"], view_func=routes["delete_controller_matrix_curriculum"])
 app.add_url_rule(routes["update_rout_matrix_curriculum"], view_func=routes["update_controller_matrix_curriculum"])
-
-# Discipline
-'''@app.route("/discipline", methods=['GET'])
-def discipliners():
-    if request.method == "GET":
-        with mysql.cursor() as cur:
-            cur.execute("SELECT * FROM discipline")
-            data = cur.fetchall()
-        return render_template('public/disciplineForm.html', data=data, username=session['username'])
-
-
-@app.route("/regdiscipline", methods=['POST'])
-def regdiscipline():
-    if request.method == "POST":
-        name_discipline = request.form['name_discipline']
-        discipline_workload_teory = request.form['discipline_workload_teory']
-        discipline_workload_practice = request.form['discipline_workload_practice']
-        discipline_workload_online = request.form['discipline_workload_online']
-        discipline_workload_total = request.form[' discipline_workload_total']
-        with mysql.cursor() as cur:
-            try:
-                cur.execute(
-                    "INSERT INTO discipline( name_discipline, discipline_workload_teory, "
-                    "discipline_workload_practice,discipline_workload_online,discipline_workload_total ) VALUES (%s, "
-                    "%s, %s, %s, %s)",
-                    (name_discipline, discipline_workload_teory, discipline_workload_practice,
-                     discipline_workload_online, discipline_workload_total))
-                cur.connection.commit()
-                flash('Inserido com sucesso!', 'success')
-            except:
-                flash('Não foi inserido!', 'error')
-            return redirect('/discipline')
-    return render_template("public/disciplineForm.html")
-
-
-@app.route("/deletedisci/<int:id_discipline>", methods=['POST'])
-def deletedisci(id_discipline):
-    if request.method == "POST":
-        with mysql.cursor() as cur:
-            cur.execute("DELETE FROM discipline WHERE id_discipline = %s ", (id_discipline,))
-            cur.connection.commit()
-            return redirect('/discipline')'''
+app.add_url_rule(routes["insert_route_building"], view_func=routes["insert_controller_building"])
+app.add_url_rule(routes["delete_route_building"], view_func=routes["delete_controller_building"])
+app.add_url_rule(routes["update_route_building"], view_func=routes["update_controller_building"])
+app.add_url_rule(routes["insert_route_education"], view_func=routes["insert_controller_education"])
+app.add_url_rule(routes["delete_route_education"], view_func=routes["delete_controller_education"])
+app.add_url_rule(routes["update_route_education"], view_func=routes["update_controller_education"])
