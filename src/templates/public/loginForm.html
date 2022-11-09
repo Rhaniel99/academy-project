@@ -1,10 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="{{ url_for('Index')}}" method="POST" autocomplete="off">
-    <div class="msg">{{ msg }}</div>
-    <input type="text" name="username" id="username" placeholder="Digite o seu usuário: ">
-    <input type="password" name="password" id="password" placeholder="Digite a sua senha: ">
-    <button type="submit" value="login">Login</button>
-</form>
+<div class="body-login">
+<div class="container2">
+    <div class="form-image"><img src="imagens/undraw_shopping_re_3wst.svg" alt=""></div>
+    <div class="form"><form action="{{ url_for('Index')}}" method="POST" autocomplete="off">
+            <div class="form-header">
+                <div class="title"><h1>Login</h1></div>
+            </div>
+                <div class="input-box">
+                    <label for="matricula">Matrícula</label>
+                    <div class="msg">{{ msg }}</div>
+            <input id="matrícula" type="text" name="username" id="username" placeholder="Digite sua matrícula" required>
+                    <label for="Password">Senha</label>
+                    <input type="password" name="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+                <div class="login-button">
+                    <button type="submit" value="login">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
