@@ -16,7 +16,7 @@ class DisciplineController(MethodView):
         discipline_workload_teory = request.form['discipline_workload_teory']
         discipline_workload_practice = request.form['discipline_workload_practice']
         discipline_workload_online = request.form['discipline_workload_online']
-        discipline_workload_total = request.form[' discipline_workload_total']
+        discipline_workload_total = request.form['discipline_workload_total']
 
         with mysql.cursor() as cur:
             try:

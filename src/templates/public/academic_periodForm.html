@@ -1,13 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="{{ url_for('Academic_Period')}}" method="POST">
-    <input type="text" name="academic_period_name" placeholder="Digite o período: ">
-    <input type="date" name="date_start" placeholder="Digite a data de início: ">
-    <input type="date" name="date_end" placeholder="Digite a data de término: ">
-    <input type="text" name="academic_period_description" placeholder="Insira uma descrição: ">
-    <button type="submit">Cadastrar</button>
-</form>
+
+<div class="container">
+    <header>Cadastro de período letivo</header>
+
+    <form action="{{ url_for('Academic_Period')}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações do período</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Nome:</label>
+                        <input type="text" name="academic_period_name" placeholder="Digite o nome do período" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Data início:</label>
+                        <input type="date" name="date_start" placeholder="Informe a data de início" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Data do fim:</label>
+                        <input type="date" name="date_end" placeholder="Informe o final">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Descrição:</label>
+                        <input type="text" name="academic_period_description" placeholder="Faça a descrição do período">
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 
 {% for academic_period in data %}
 {{academic_period.1}}

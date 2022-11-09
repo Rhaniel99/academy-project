@@ -1,12 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/update/matrix_curriculum/{{one.0}}" method="POST">
-    <input type="date" name="'date_start" value="{{one.1}}" placeholder="Insira o início da vigência: ">
-    <input type="number" name="cod" value="{{one.2}}" placeholder="Insira o código: ">
-    <input type="text" name="course" value="{{one.3}}" placeholder="Insira o curso: ">
-    <imput type="text" name="discipline" value="{{one.4}}" placeholder="Insira a disciplina: ">
-    <imput type="text" name="period" value="{{one.5}}" placeholder="Insira o período: ">
-    <button type="submit">Cadastrar</button>
-</form>
+
+
+<div class="container">
+    <header>Cadastro de matriz curricular</header>
+
+    <form action="/update/matrix_curriculum/{{one.0}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações da matriz</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Início da vigência:</label>
+                        <input type="date" name="date_start" value="{{one.1}}" placeholder="Informe o início da vigência: " >
+                    </div>
+                    <div class="input-field">
+                        <label>Código:</label>
+                        <input type="number" name="cod" value="{{one.2}}" placeholder="Insira o código: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Curso:</label>
+                        <input type="text" name="course" value="{{one.3}}" placeholder="Insira o curso: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Disciplina:</label>
+                        <input type="text" name="discipline" value="{{one.4}}" placeholder="Insira a disciplina: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Período:</label>
+                        <input type="text" name="period" value="{{one.5}}" placeholder="Insira o período: ">
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
+
 {% endblock %}

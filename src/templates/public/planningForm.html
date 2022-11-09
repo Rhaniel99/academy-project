@@ -1,16 +1,69 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="{{ url_for('Planning')}}" method="POST">
-    <input type="text" name="semester" placeholder="Digite o semestre: ">
-    <input type="text" name="class1" placeholder="Digite a turma: ">
-    <input type="text" name="discipline" placeholder="Digite a disciplina: ">
-    <input type="text" name="teacher" placeholder="Digite o professor: ">
-    <input type="number" name="workload" placeholder="Digite a carga horária: ">
-    <input type="text" name="modalit_offering" placeholder="Digite a modalidade: ">
-    <input type="text" name="status" placeholder="Digite o status: ">
-    <button type="submit">Cadastrar</button>
-</form>
+
+<div class="container">
+    <header>Cadastro de planejamento</header>
+
+    <form action="{{ url_for('Planning')}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações do planejamento</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Semestre:</label>
+                        <input type="text" name="semester" placeholder="Digite o nome do semestre" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Turma:</label>
+                        <input type="text" name="class1" placeholder="Digite o código da turma">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Disciplina:</label>
+                        <input type="text" name="discipline" placeholder="Digite o nome da disciplina">
+                    </div>
+                    <div class="input-field">
+                        <label>Nome do professor:</label>
+                        <input type="text" name="teacher" placeholder="Digite o nome do professor">
+                    </div>
+                    <div class="input-field">
+                        <label>CH ofertada:</label>
+                        <input type="text" name="workload" placeholder="Informe a ch ofertada">
+                    </div>
+                    <div class="input-field">
+                        <label>Modalidade:</label>
+                        <select name="modalit_offering">
+                            <option value="Presencial">Presencial</option>
+                            <option value="Semipresencial">Semipresencial</option>
+                            <option value="EAD">EAD</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label>Status:</label>
+                        <select name="status">
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+
+
+             
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 
 {% for planning in data %}
 {{planning.1}}

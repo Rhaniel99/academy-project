@@ -92,12 +92,12 @@ CREATE TABLE IF NOT EXISTS education_institution(
 CREATE TABLE IF NOT EXISTS discipline(
     id_discipline int NOT NULL AUTO_INCREMENT,
     name_discipline VARCHAR(30),
-    discipline_workload_teory TIME,
-    discipline_workload_practice TIME,
-    discipline_workload_online TIME,
-    discipline_workload_total TIME,
+    discipline_workload_teory VARCHAR(15),
+    discipline_workload_practice VARCHAR(15),
+    discipline_workload_online VARCHAR(15),
+    discipline_workload_total VARCHAR(15),
     PRIMARY KEY(id_discipline)
-); #
+); # FALTANDO COD DISCIPLINA CAMPO
 
 CREATE TABLE IF NOT EXISTS matrix_curriculum(
     id int NOT NULL AUTO_INCREMENT,

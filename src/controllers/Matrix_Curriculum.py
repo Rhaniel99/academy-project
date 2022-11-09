@@ -44,8 +44,8 @@ class UpdateMatrix_CurriculumController(MethodView):
     def get(self, id):
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM matrix_curriculum WHERE id =%s ", (id,))
-            onetea = cur.fetchone()
-            return render_template('public/matrix_curriculumupForm.html', onetea=onetea, username=session['username'])
+            one = cur.fetchone()
+            return render_template('public/matrix_curriculumupForm.html', one=one, username=session['username'])
 
     def post(self, id):
         date_start = request.form['date_start']

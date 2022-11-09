@@ -42,8 +42,8 @@ class UpdateAcademic_PeriodController(MethodView):
     def get(self, id_period):
         with mysql.cursor() as cur:
             cur.execute("SELECT * FROM academic_period WHERE id_period =%s ", (id_period,))
-            onetea = cur.fetchone()
-            return render_template('public/academic_periodupForm.html', onetea=onetea, username=session['username'])
+            one = cur.fetchone()
+            return render_template('public/academic_periodupForm.html', one=one, username=session['username'])
 
     def post(self, id_period):
         academic_period_name = request.form['academic_period_name']
