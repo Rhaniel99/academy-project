@@ -1,15 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="{{ url_for('Discipline')}}" method="POST">
-    <input type="text" name="name_discipline" placeholder="Digite o nome da disciplina: ">
-    <input type="number" name="discipline_workload_teory" placeholder="Insira a carga horária teórica: ">
-    <input type="number" name="discipline_workload_practice" placeholder="Insira a carga horária prática: ">
-    <input type="number" name="discipline_workload_online" placeholder="Insira a carga horária online:">
-    <input type="number" name=" discipline_workload_total" placeholder="Insira a carga horária total:">
 
-    <button type="submit">Cadastrar</button>
-</form>
+
+<div class="container">
+    <header>Cadastro de disciplina</header>
+
+    <form action="{{ url_for('Discipline')}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações da disciplina</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Nome:</label>
+                        <input type="text" name="name_discipline" placeholder="Digite o nome da disciplina: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Código:</label>
+                        <input type="text" name="code_discipline" placeholder="Digite o código da disciplina: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>CH total:</label>
+                        <input type="text" name="discipline_workload_total" placeholder="Informe a ch total: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>CH teórica:</label>
+                        <input type="text" name="discipline_workload_teory" placeholder="Informe a ch teórica: ">
+                    </div>
+                    <div class="input-field">
+                        <label>CH prática:</label>
+                        <input type="text" name="discipline_workload_practice" placeholder="Informe a ch prática: ">
+                    </div>
+                    <div class="input-field">
+                        <label>CH online:</label>
+                        <input type="text" name="discipline_workload_online" placeholder="Informe a ch online: ">
+                    </div>
+
+             
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 
 {% for discipline in data %}
 {{discipline.1}}

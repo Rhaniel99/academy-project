@@ -1,14 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="{{ url_for('Matrix_curriculum')}}" method="POST">
-    <input type="date" name="'date_start" placeholder="Insira o início da vigência: ">
-    <input type="number" name="cod" placeholder="Insira o código: ">
-    <input type="text" name="course" placeholder="Insira o curso: ">
-    <imput type="text" name="discipline" placeholder="Insira a disciplina: ">
-    <imput type="text" name="period" placeholder="Insira o período: ">
-    <button type="submit">Cadastrar</button>
-</form>
+
+
+<div class="container">
+    <header>Cadastro de matriz curricular</header>
+
+    <form action="{{ url_for('Matrix_Curriculum')}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações da matriz</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Início da vigência:</label>
+                        <input type="Date" name="date_start" placeholder="Informe o início da vigência" >
+                    </div>
+                    <div class="input-field">
+                        <label>Código:</label>
+                        <input type="number" name="cod" placeholder="Insira o código: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Curso:</label>
+                        <input type="text" name="course" placeholder="Insira o curso: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Disciplina:</label>
+                        <input type="text" name="discipline" placeholder="Insira a disciplina: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Período:</label>
+                        <input type="text" name="period" placeholder="Insira o período: ">
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 
 {% for matrix_curriculum in data %}
 {{matrix_curriculum.1}}
@@ -18,7 +57,7 @@
     <button>DELETAR</button>
 </form>
 
-<a href="/update/matrix_curriculum/{{class.0}}">atualizar</a>
+<a href="/update/matrix_curriculum/{{matrix_curriculum.0}}">atualizar</a>
 <br>
 
 {% else %}

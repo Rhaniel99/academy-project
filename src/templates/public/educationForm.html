@@ -1,14 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="{{ url_for('EducationInstitution')}}" method="POST">
-    <input type="text" name="corporate_name" placeholder="Digite o nome corporativo (Razão Social): ">
-    <input type="text" name="institution_name" placeholder="Digite o nome da instituição: ">
-    <input type="text" name="matrix" placeholder="Matriz: ">
-    <input type="text" name="affiliated" placeholder="Filiais: ">
-    <input type="text" name="course" placeholder="Cursos: ">
-    <button type="submit">Cadastrar</button>
-</form>
+
+
+<div class="container">
+    <header>Cadastro de instituição de ensino</header>
+
+    <form action="{{ url_for('EducationInstitution')}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações da instituição</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Razão social:</label>
+                        <input type="text"  name="corporate_name" placeholder="Digite a razão social: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Nome da instituição:</label>
+                        <input type="text" name="institution_name" placeholder="Digite o nome da instituição: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Matriz:</label>
+                        <input type="text" name="matrix" placeholder="Digite a matriz: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Filiais:</label>
+                        <input type="text" name="affiliated" placeholder="Informe as filiais: ">
+                    </div>
+                    <div class="input-field">
+                        <label>Cursos oferecidos:</label>
+                        <input type="text" name="course" placeholder="Cursos: ">
+                    </div>
+
+             
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 
 {% for edu in data %}
 {{edu.1}}

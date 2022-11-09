@@ -1,14 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/update/edu/{{one.0}}" method="POST">
-    <input type="text" name="corporate_name" value="{{one.1}}" placeholder="Digite o nome corporativo (Razão Social): ">
-    <input type="text" name="institution_name" value="{{one.2}}" placeholder="Digite o nome da instituição: ">
-    <input type="text" name="matrix" value="{{one.3}}" placeholder="Matriz: ">
-    <input type="text" name="affiliated" value="{{one.4}}" placeholder="Filiais: ">
-    <input type="text" name="course" value="{{one.5}}" placeholder="Cursos: ">
-    <button type="submit">Atualizar</button>
-</form>
 
 
+<div class="container">
+    <header>Cadastro de instituição de ensino</header>
+
+    <form action="/update/edu/{{one.0}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações da instituição</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Razão social:</label>
+                        <input type="text" name="corporate_name" value="{{one.1}}"placeholder="Digite a razão social: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Nome:</label>
+                        <input type="text" name="institution_name" value="{{one.2}}" placeholder="Digite o nome da disciplina: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Matriz:</label>
+                        <input type="text" name="matrix" value="{{one.3}}" placeholder="Digite a matriz: ">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Filiais:</label>
+                        <input type="text" name="affiliated" value="{{one.4}}" placeholder="Informe as filiais: ">
+                    </div>
+                    <div class="input-field">
+                        <label>Cursos oferecidos:</label>
+                        <input type="text" name="course" value="{{one.5}}" placeholder="Cursos: ">
+                    </div>
+
+             
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 {% endblock %}
