@@ -3,15 +3,48 @@
 {% block content %}
 
 
-<form action="/update/academic_period/{{onetea.0}}" method="POST">
-    <input type="text" name="academic_period_name" value="{{onetea.1}}" placeholder="Digite o período: ">
-    <input type="date" name="date_start" value="{{onetea.2}}" placeholder="Digite a data de início: ">
-    <input type="date" name="date_end" value="{{onetea.3}}" placeholder="Digite a data de término: ">
-    <input type="text" name="academic_period_description" value="{{onetea.4}}" placeholder="Insira uma descrição: ">
 
+<div class="container">
+    <header>Cadastro de período letivo</header>
 
-    <button type="submit">Atualizar</button>
-</form>
+    <form action="/update/academic_period/{{one.0}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações do período</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Nome:</label>
+                        <input type="text" name="academic_period_name" value="{{one.1}}" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Data início:</label>
+                        <input type="date" name="date_start" value="{{one.2}}" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Data do fim:</label>
+                        <input type="date" name="date_end" value="{{one.3}}" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Descrição:</label>
+                        <input type="text" name="academic_period_description" value="{{one.4}}" required>
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Atualizar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 
 
 {% endblock %}

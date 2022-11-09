@@ -1,12 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="{{ url_for('Building')}}" method="POST">
-    <input type="text" name="name_unity" placeholder="Digite o nome da unidade:">
-    <input type="text" name="adress" placeholder="Digite o endereço:">
-    <input type="text" name="rooms" placeholder="Digite a quantidade de salas:">
-    <button type="submit">Cadastrar</button>
-</form>
+
+
+<div class="container">
+    <header>Cadastro de prédio</header>
+
+    <form action="{{ url_for('Building')}}" method="POST"> 
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações do prédio</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Nome:</label>
+                        <input type="text" name="name_unity" placeholder="Digite o nome do prédio" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Endereço:</label>
+                        <input type="text" name="adress" placeholder="Digite o endereço">
+                    </div>
+                    <div class="input-field">
+                        <label>Salas:</label>
+                        <input type="text" name="rooms" placeholder="Digite a quantidade de salas: ">
+                    </div>
+
+                   
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Cadastrar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
+
+
 
 {% for building in data %}
 {{building.1}}
