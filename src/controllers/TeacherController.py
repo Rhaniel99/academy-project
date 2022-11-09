@@ -46,7 +46,7 @@ class DeleteTeacherController(MethodView):
         with mysql.cursor() as cur:
             cur.execute("DELETE FROM teachers WHERE id_teacher = %s ", (id_teacher,))
             cur.connection.commit()
-            return redirect(url_for('Teacher'))
+            return redirect(url_for('Viewer_Teacher'))
 
 
 class UpdateTeacherController(MethodView):
@@ -67,7 +67,6 @@ class UpdateTeacherController(MethodView):
         close_d_teacher = request.form['close_d_teacher']
         status_teacher = request.form['status_teacher']
 
-
         with mysql.cursor() as cur:
             cur.execute("UPDATE teachers SET full_n_teacher = %s, graduate_teacher = %s, reg_teacher = %s, "
                         "hist_vh_teacher = %s, "
@@ -79,3 +78,10 @@ class UpdateTeacherController(MethodView):
             cur.connection.commit()
             return redirect(url_for('Teacher'))
 
+
+class ViewerTeacherController(MethodView):
+    def get(self):
+        with mysql.cursor() as cur:
+            cur.execute("SELECT * FROM teachers")
+            data = cur.fetchall()
+            return render_template('public/teacherViewForm.html', username=session['username'], data=data)

@@ -13,6 +13,7 @@ def logout():
 
 app.add_url_rule(routes["index_route"], view_func=routes["indexcontroller"])
 app.add_url_rule(routes["menu_route"], view_func=routes["menucontroller"])
+app.add_url_rule(routes["viewer_route_teacher"], view_func=routes["viewer_controller_teacher"])
 app.add_url_rule(routes["insert_route_teacher"], view_func=routes["insert_controller_teacher"])
 app.add_url_rule(routes["delete_route_teacher"], view_func=routes["delete_controller_teacher"])
 app.add_url_rule(routes["update_route_teacher"], view_func=routes["update_controller_teacher"])

@@ -62,20 +62,4 @@
             </div>
         </form>
     </div>
-
-
-
-{% for teacher in data %}
-{{teacher.1}}
-<form action='/delete/teacher/{{teacher.0}}' method="POST">
-    <button>DELETAR</button>
-</form>
-
-<a href="/update/teacher/{{teacher.0}}">atualizar</a>
-<br>
-{% else %}
-NÃO TEM PROFESSORES
-
-{% endfor %}
-
 {% endblock %}

@@ -13,6 +13,7 @@ from src.controllers.EducationInstController import *
 routes = {
     "index_route": "/", "indexcontroller": IndexController.as_view("Index"),
     "menu_route": "/menu", "menucontroller": MenuController.as_view("Menu"),
+    "viewer_route_teacher": "/viewer/teacher", "viewer_controller_teacher": ViewerTeacherController.as_view("Viewer_Teacher"),
     "insert_route_teacher": "/insert/teacher", "insert_controller_teacher": TeacherController.as_view("Teacher"),
     "delete_route_teacher": "/delete/teacher/<int:id_teacher>", "delete_controller_teacher": DeleteTeacherController.as_view("Delete_Teacher"),
     "update_route_teacher": "/update/teacher/<int:id_teacher>", "update_controller_teacher": UpdateTeacherController.as_view("Update_Teacher"),
