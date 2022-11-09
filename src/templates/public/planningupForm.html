@@ -1,14 +1,69 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/update/plan/{{one.0}}" method="POST">
-    <input type="text" name="semester" value="{{one.1}}" placeholder="Digite o semestre: ">
-    <input type="text" name="class1" value="{{one.2}}" placeholder="Digite a turma: ">
-    <input type="text" name="discipline" value="{{one.3}}" placeholder="Digite a disciplina: ">
-    <input type="text" name="teacher" value="{{one.4}}" placeholder="Digite o professor: ">
-    <input type="number" name="workload" value="{{one.5}}" placeholder="Digite a carga horária: ">
-    <input type="text" name="modalit_offering" value="{{one.6}}" placeholder="Digite a modalidade: ">
-    <input type="text" name="status" value="{{one.7}}" placeholder="Digite o status: ">
-    <button type="submit">Cadastrar</button>
-</form>
+
+
+<div class="container">
+    <header>Cadastro de planejamento</header>
+
+    <form action="/update/plan/{{one.0}}" method="POST">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações do planejamento</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Semestre:</label>
+                        <input type="text" name="semester" value={{one.1}} required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Turma:</label>
+                        <input type="text" name="class1" value="{{one.2}}" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Disciplina:</label>
+                        <input type="text" name="discipline" value="{{one.3}}">
+                    </div>
+                    <div class="input-field">
+                        <label>Nome do professor:</label>
+                        <input type="text" name="teacher" value="{{one.4}}">
+                    </div>
+                    <div class="input-field">
+                        <label>CH ofertada:</label>
+                        <input type="text" name="workload" value="{{one.5}}">
+                    </div>
+                    <div class="input-field">
+                        <label>Modalidade:</label>
+                        <select name="modalit_offering">
+                            <option value="{{one.6}}">{{one.6}}</option>
+                            <option value="Semipresencial">Semipresencial</option>
+                            <option value="EAD">EAD</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label>Status:</label>
+                        <select name="status">
+                            <option value="{{one.7}}">{{one.7}}</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+
+
+             
+                    
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Atualizar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
+
 {% endblock %}

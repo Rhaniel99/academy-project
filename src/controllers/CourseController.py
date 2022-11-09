@@ -6,7 +6,7 @@ from flask.views import MethodView
 class CourseController(MethodView):
     def get(self):
         with mysql.cursor() as cur:
-            cur.execute("SELECT * FROM course")
+            cur.execute("SELECT * FROM courses")
             data = cur.fetchall()
         return render_template('public/courseForm.html', data=data, username=session['username'])
 
@@ -20,7 +20,7 @@ class CourseController(MethodView):
         with mysql.cursor() as cur:
             try:
                 cur.execute(
-                    "INSERT INTO course(full_n_course, short_n_course, modal_course, class_course) VALUES (%s, %s, "
+                    "INSERT INTO courses(full_n_course, short_n_course, modal_course, class_course) VALUES (%s, %s, "
                     "%s, %s)",
                     (full_n_course, short_n_course, modal_course, class_course))
                 cur.connection.commit()
@@ -34,7 +34,7 @@ class CourseController(MethodView):
 class DeleteCourseController(MethodView):
     def post(self, id_course):
         with mysql.cursor() as cur:
-            cur.execute("DELETE FROM course WHERE id_course = %s ", (id_course,))
+            cur.execute("DELETE FROM courses WHERE id_course = %s ", (id_course,))
             cur.connection.commit()
             return redirect(url_for('Course'))
 
@@ -42,7 +42,7 @@ class DeleteCourseController(MethodView):
 class UpdateCourseController(MethodView):
     def get(self, id_course):
         with mysql.cursor() as cur:
-            cur.execute("SELECT * FROM course WHERE id_course =%s ", (id_course,))
+            cur.execute("SELECT * FROM courses WHERE id_course =%s ", (id_course,))
             one = cur.fetchone()
             return render_template('public/courseupForm.html', one=one, username=session['username'])
 
@@ -54,7 +54,7 @@ class UpdateCourseController(MethodView):
         class_course = request.form['class_course']
 
         with mysql.cursor() as cur:
-            cur.execute("UPDATE course SET full_n_course = %s, short_n_course = %s, modal_course = %s, "
+            cur.execute("UPDATE courses SET full_n_course = %s, short_n_course = %s, modal_course = %s, "
                         "class_course = %s WHERE id_course = %s ", (full_n_course, short_n_course, modal_course, class_course, id_course))
             cur.connection.commit()
             return redirect(url_for('Course'))

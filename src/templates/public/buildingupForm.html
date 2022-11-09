@@ -2,11 +2,44 @@
 
 {% block content %}
 
-<form action="/update/build/{{one.0}}" method="POST">
-    <input type="text" name="name_unity" value="{{one.1}}" placeholder="Digite o nome da unidade:">
-    <input type="text" name="adress" value="{{one.2}}" placeholder="Digite o endereço:">
-    <input type="text" name="rooms" value="{{one.3}}" placeholder="Digite a quantidade de salas:">
-    <button type="submit">Atualizar</button>
-</form>
 
+
+
+<div class="container">
+    <header>Cadastro de prédio</header>
+
+    <form action="/update/build/{{one.0}}" method="POST"> 
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Informações do prédio</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Nome da unidade:</label>
+                        <input type="text" name="name_unity" value="{{one.1}}" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Endereço:</label>
+                        <input type="text" name="adress" value="{{one.2}}" required>
+                    </div>
+                    
+                    <div class="input-field">
+                        <label>Salas:</label>
+                        <input type="text" name="rooms" value="{{one.3}}" required>
+                    </div>
+
+                   
+                </div>
+            </div>
+
+            
+
+                <button type="submit">Atualizar</button>
+            </div> 
+        </div>
+
+        
+    </form>
+</div>
 {% endblock %}

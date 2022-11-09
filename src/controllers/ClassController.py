@@ -13,23 +13,25 @@ class ClassController(MethodView):
     def post(self):
             msg = ''
             institution = request.form['institution']
-            course = request.form['course']
+            course = request.form['course_name']
             status_class = request.form['status_class']
             type_class = request.form['type_class']
             expected_numb_stud = request.form['expected_numb_stud']
             enrolled_numb_stud = request.form['enrolled_numb_stud']
             semester = request.form['semester']
+            code_class = request.form['code_class']
             matrix_curriculum = request.form['matrix_curriculum']
             turn_class = request.form['turn_class']
             series_class = request.form['series_class']
 
             with mysql.cursor() as cur:
                 try:
-                    cur.execute("INSERT INTO class(institution, course, status_class, type_class, expected_numb_stud, "
+                    cur.execute("INSERT INTO class(institution, course_name,code_class, status_class, type_class, "
+                                "expected_numb_stud, "
                                 "enrolled_numb_stud, semester, matrix_curriculum, turn_class, series_class ) VALUES ("
                                 "%s, %s, %s, "
-                                "%s, %s, %s, %s, %s, %s, %s)",
-                                (institution, course, status_class, type_class, expected_numb_stud, enrolled_numb_stud,
+                                "%s, %s, %s, %s, %s, %s, %s, %s)",
+                                (institution, course,code_class, status_class, type_class, expected_numb_stud, enrolled_numb_stud,
                                  semester,
                                  matrix_curriculum, turn_class, series_class))
                     cur.connection.commit()
@@ -68,7 +70,7 @@ class UpdateClassController(MethodView):
         series_class = request.form['series_class']
 
         with mysql.cursor() as cur:
-            cur.execute("UPDATE class SET institution = %s, course = %s, status_class = %s, type_class = %s, "
+            cur.execute("UPDATE class SET institution = %s, course_name = %s, status_class = %s, type_class = %s, "
                         "expected_numb_stud = %s, enrolled_numb_stud = %s, semester = %s, matrix_curriculum = %s, "
                         "turn_class = %s, series_class = %s  WHERE id_class = %s ",
                         (institution, course, status_class, type_class, expected_numb_stud, enrolled_numb_stud,

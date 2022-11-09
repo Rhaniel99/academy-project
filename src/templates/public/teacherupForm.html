@@ -2,20 +2,78 @@
 
 {% block content %}
 
+   <div class="container">
+        <header>Cadastro de professor(a)</header>
 
-<form action="/update/teacher/{{onetea.0}}" method="POST">
-    <input type="text" name="full_n_teacher" value="{{onetea.1}}" placeholder="Digite o nome do professor: ">
-    <input type="number" name="register_teacher" value="{{onetea.2}}" placeholder="Digite a matricula do professor">
-    <input type="number" name="hist_vh_teacher" value="{{onetea.3}}" placeholder="Quanto é o historico de valor hora por aula?">
-    <input type="text" name="tittle_teacher" value="{{onetea.4}}" placeholder="Qual a graduação do professor?">
-    <input type="text" name="reg_w_teacher" value="{{onetea.5}}" placeholder="Qual o regime de trabalho do professor?">
-    <input type="date" name="hiring_d_teacher" value="{{onetea.6}}" placeholder="Qual a data de contratação do professor?">
-    <input type="date" name="close_d_teacher" value="{{onetea.7}}" placeholder="Qual a data de desligamento do professor?">
-    <input type="text" name="status_teacher" value="{{onetea.8}}" placeholder="Status: ">
+	<form action="/update/teacher/{{onetea.0}}" method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Informações do(a) professor(a)</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Nome completo:</label>
+                            <input type="text" name="full_n_teacher" value="{{onetea.1}}" placeholder="Digite o nome do professor" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Matrícula:</label>
+                            <input type="number" name="register_teacher" value="{{onetea.3}}" placeholder="Digite a matrícula" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Graduação:</label>
+                            <input type="text" name="graduate_teacher" value="{{onetea.2}}" placeholder="Informe a graduação">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Histórico de hora-aula:</label>
+                            <input type="text" name="hist_vh_teacher" value="{{onetea.4}}" placeholder="Informe a hora-aula">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Titulação:</label>
+                            <select name="tittle_teacher">
+                                <option value="{{onetea.5}}">{{onetea.5}}</option>
+                                <option value="mestre(a)">Mestre(a)</option>
+                                <option value="doutor(a)">Doutor(a)</option>
+                                <option value="phd">PhD</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Regime de trabalho:</label>
+                            <select name="reg_w_teacher">
+                                <option value="{{onetea.6}}">{{onetea.6}}</option>
+                                <option value="Parcial">Parcial</option>
+                                <option value="Parcial">DE</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Data de contratação:</label>
+                            <input type="date" name="hiring_d_teacher" value="{{onetea.7}}">
+                        </div>
+                        <div class="input-field">
+                            <label>Data do desligamento:</label>
+                            <input type="date" name="close_d_teacher" value="{{onetea.8}}">
+                        </div>
+                        <div class="input-field">
+                            <label >Status:</label>
+                            <select name="status_teacher" required>
+                                <option value="{{onetea.9}}">{{onetea.9}}</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                    <button type="submit">Atualizar</button>
+                </div>
+            </div>
 
 
-    <button type="submit">Atualizar</button>
-</form>
+        </form>
+    </div>
 
 
 {% endblock %}
