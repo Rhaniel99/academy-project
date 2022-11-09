@@ -1,83 +1,67 @@
 {% extends "base.html" %}
 {% block content %}
-
  <div class="container" >
         <header>Cadastro de professor(a)</header>
-
         <form action="{{ url_for('Teacher')}}" method="POST">
             <div class="form first" >
                 <div class="details personal">
                     <span class="title">Informações do(a) professor(a)</span>
-
                     <div class="fields">
                         <div class="input-field">
                             <label>Nome completo:</label>
-                            <input type="text" placeholder="Digite o nome do professor" required>
+                            <input type="text" name="full_n_teacher" placeholder="Digite o nome do professor" required>
                         </div>
-
                         <div class="input-field">
                             <label>Matrícula:</label>
-                            <input type="number" placeholder="Digite a matrícula" required>
+                            <input type="number" name="register_teacher" placeholder="Digite a matrícula" required>
                         </div>
-
                         <div class="input-field">
                             <label>Graduação:</label>
-                            <input type="text" placeholder="Informe a graduação">
+                            <input type="text" name="graduate_teacher" placeholder="Informe a graduação">
                         </div>
-
                         <div class="input-field">
                             <label>Histórico de hora-aula:</label>
-                            <input type="text" placeholder="Informe a hora-aula">
+                            <input type="text" name="hist_vh_teacher" placeholder="Informe a hora-aula">
                         </div>
-
                         <div class="input-field">
                             <label>Titulação:</label>
-                            <select>
+                            <select name="tittle_teacher">
                                 <option value="pós graduado(a)">Pós graduado(a)</option>
                                 <option value="mestre(a)">Mestre(a)</option>
                                 <option value="doutor(a)">Doutor(a)</option>
                                 <option value="phd">PhD</option>
                             </select>
                         </div>
-
                         <div class="input-field">
                             <label>Regime de trabalho:</label>
-                            <select>
-                                <option value="Integral">Integral</option>
-                                <option value="Parcial">Parcial</option>
-                                <option value="Parcial">DE</option>
+                            <select name="reg_w_teacher">
+                                <option value="integral">Integral</option>
+                                <option value="parcial">Parcial</option>
+                                <option value="EAD">EAD</option>
                             </select>
                         </div>
                         <div class="input-field">
                             <label>Data de contratação:</label>
-                            <input type="date" placeholder="Informe a data de contratação">
+                            <input type="date" name="hiring_d_teacher" placeholder="Informe a data de contratação">
                         </div>
                         <div class="input-field">
                             <label>Data do desligamento:</label>
-                            <input type="date" placeholder="Informe a data do desligamento">
+                            <input type="date" name="close_d_teacher" placeholder="Informe a data do desligamento">
                         </div>
                         <div class="input-field">
                             <label>Status:</label>
-                            <select required>
-                                <option value="Ativo">Ativo</option>
-                                <option value="Inativo">Inativo</option>
+                            <select name="status_teacher" required>
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
                             </select>
                         </div>
-
                     </div>
                 </div>
-
-
-
                     <button type="submit">Cadastrar</button>
                 </div>
             </div>
-
-
         </form>
     </div>
-
-
 
 
 

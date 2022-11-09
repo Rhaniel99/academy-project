@@ -1,19 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="{{ url_for('Class')}}" method="POST">
-    <input type="text" name="institution" placeholder="Digite o nome da instituição:  ">
-    <input type="text" name="course" placeholder="Digite o nome do curso: ">
-    <input type="text" name="status_class" placeholder="Qual é o status da turma?">
-    <input type="text" name="type_class" placeholder="Qual é o tipo de turma?">
-    <input type="number" name="expected_numb_stud" placeholder="Número de alunos previstos: ">
-    <input type="number" name="enrolled_numb_stud" placeholder="Número de alunos matriculados: ">
-    <input type="number" name="semester" placeholder="Insira o semestre: ">
-    <input type="text" name="matrix_curriculum" placeholder="Insira a matriz curricular: ">
-    <input type="text" name="turn_class" placeholder="Insira o turno: ">
-    <input type="text" name="series_class" placeholder="Digite a série: ">
-    <button type="submit">Cadastrar</button>
-</form>
+  <div class="container">
+        <header>Cadastro de turma</header>
+        <form action="{{ url_for('Class')}}" method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Informações da turma</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Semestre:</label>
+                            <input type="text" name="semester" placeholder="Digite o nome do semestre" required>
+                        </div>
+                         <div class="input-field">
+                            <label>Instituição:</label>
+                            <input type="text" name="institution" placeholder="Digite o nome da instituição" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Código:</label>
+                            <input type="text" name="code_class" placeholder="Digite o código da turma">
+                        </div>
+                        <div class="input-field">
+                            <label>Tipo:</label>
+                            <input type="text" name="type_class" placeholder="Digite o tipo da turma">
+                        </div>
+                        <div class="input-field">
+                            <label>Curso:</label>
+                            <input type="text" name="course_name" placeholder="Digite o nome do curso">
+                        </div>
+                        <div class="input-field">
+                            <label>Turno:</label>
+                            <select name="turn_class">
+                                <option value="matutino">Matutino</option>
+                                <option value="vespertino">Vespertino</option>
+                                <option value="noturno">Noturno</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Série:</label>
+                            <input type="text" name="series_class" placeholder="Digite a série">
+                        </div>
+                        <div class="input-field">
+                            <label>Alunos previstos:</label>
+                            <input type="number" name="expected_numb_stud"  placeholder="Informe os alunos previstos">
+                        </div>
+                        <div class="input-field">
+                            <label>Matriz Curricular:</label>
+                            <input type="text" name="matrix_curriculum" placeholder="Informe a matriz curricular">
+                        </div>
+                        <div class="input-field">
+                            <label>Alunos matriculados:</label>
+                            <input type="text" name="enrolled_numb_stud" placeholder="Informe os alunos matriculados">
+                        </div>
+                        <div class="input-field">
+                            <label>Status:</label>
+                            <select name="status_class">
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
 
 {% for class in data %}
 {{class.1}}

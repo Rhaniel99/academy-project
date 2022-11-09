@@ -1,23 +1,74 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <div class="container">
+        <header>Cadastro de turma</header>
+        <form action="/update/class/{{onetea.0}}" method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Informações da turma</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Semestre:</label>
+                            <input type="text" name="semester" placeholder="Digite o nome do semestre"  value="{{onetea.8}}" required>
+                        </div>
+                         <div class="input-field">
+                            <label>Instituição:</label>
+                            <input type="text" name="institution" value="{{onetea.2}}" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Código:</label>
+                            <input type="text" name="code_class" value="{{onetea.3}}">
+                        </div>
+                        <div class="input-field">
+                            <label>Tipo:</label>
+                            <input type="text" name="type_class" value="{{onetea.5}}">
+                        </div>
+                        <div class="input-field">
+                            <label>Curso:</label>
+                            <input type="text" name="course_name" value="{{onetea.2}}">
+                        </div>
+                        <div class="input-field">
+                            <label>Turno:</label>
+                            <select name="turn_class">
+                                <option value="{{onetea.10}}">{{onetea.10}}</option>
+                                <option value="vespertino">Vespertino</option>
+                                <option value="noturno">Noturno</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Série:</label>
+                            <input type="text" name="series_class" value="{{onetea.11}}">
+                        </div>
+                        <div class="input-field">
+                            <label>Alunos previstos:</label>
+                            <input type="number" name="expected_numb_stud"  value="{{onetea.6}}">
+                        </div>
+                        <div class="input-field">
+                            <label>Alunos matriculados:</label>
+                            <input type="text" name="enrolled_numb_stud" value="{{onetea.7}}">
+                        </div>
+                        <div class="input-field">
+                            <label>Matriz Curricular:</label>
+                            <input type="text" name="matrix_curriculum" value="{{onetea.9}}">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Status:</label>
+                            <select name="status_class">
+                                <option value="{{onetea.4}}">{{onetea.4}}</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                    <button type="submit">Atualizar</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
 
-<form action="/update/class/{{onetea.0}}" method="POST">
-    <input type="text" name="institution" value="{{onetea.1}}" placeholder="Digite o nome da instituição: ">
-    <input type="text" name="course" value="{{onetea.2}}" placeholder="Digite o nome do curso: ">
-    <input type="text" name="status_class" value="{{onetea.3}}" placeholder="Qual é o status da turma?">
-    <input type="text" name="type_class" value="{{onetea.4}}" placeholder="Qual é o tipo de turma?">
-    <input type="number" name="expected_numb_stud" value="{{onetea.5}}" placeholder="Número de alunos previstos: ">
-    <input type="number" name="enrolled_numb_stud" value="{{onetea.6}}" placeholder="Número de alunos matriculados: ">
-    <input type="number" name="semester" value="{{onetea.7}}" placeholder="Insira o semestre: ">
-    <input type="text" name="matrix_curriculum" value="{{onetea.8}}" placeholder="Insira a matriz curricular: ">
-    <input type="text" name="turn_class" value="{{onetea.9}}" placeholder="Insira o turno: ">
-    <input type="text" name="series_class" value="{{onetea.10}}" placeholder="Digite a série: ">
-
-
-    <button type="submit">Atualizar</button>
-</form>
 
 
 {% endblock %}

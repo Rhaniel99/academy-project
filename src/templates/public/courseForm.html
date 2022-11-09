@@ -1,44 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
-    <header>Cadastro de cursos</header>
-
-    <form action="{{ url_for('Course')}}" method="POST">
-        <div class="form first">
-            <div class="details personal">
-                <span class="title">Informações do curso</span><br><br>
-
-                <div class="fields">
-                    <div class="input field">
-                        <label>Nome completo:</label>
-                        <input type="text" name="full_n_course" placeholder="Digite o nome completo" required>
-                    </div>
-                    <br>
-
+ <div class="container">
+        <header>Cadastro de curso</header>
+        <form action="{{ url_for('Course')}}" method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Informações do curso</span>
                     <div class="fields">
-                        <div class="input field">
+                        <div class="input-field">
+                            <label>Nome completo:</label>
+                            <input type="text" name="full_n_course" placeholder="Digite o nome completo" required>
+                        </div>
+                        <div class="input-field">
                             <label>Nome reduzido:</label>
                             <input type="text" name="short_n_course" placeholder="Digite o nome reduzido" required>
-                            <br>
-                            <br>
-                            <div class="input field">
-                                <label>Modalidade:</label>
-                                <input type="text" name="modal_course" placeholder="Qual é a modalidade do curso?">
-                                </select>
-                            </div>
-                            <br>
-                            <div class="input field">
-                                <label>Turma:</label>
-                                <input type="text" name="class_course" placeholder="Digite a turma" required>
-                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label>Modalidade:</label>
+                            <select name="modal_course">
+                                <option value="bacharelado">Bacharelado</option>
+                                <option value="tecnologo">Tecnólogo</option>
+                                <option value="licenciatura">Licenciatura</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Turmas:</label>
+                            <input type="text" name="class_course" placeholder="Informe as turmas">
                         </div>
                     </div>
                 </div>
-                <br>
-                <br>
-                <button type="submit">Cadastrar</button>
-    </form>
-</div>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
 
 {% for course in data %}
 {{course.1}}

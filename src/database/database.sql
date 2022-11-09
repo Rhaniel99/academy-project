@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS accounts(
 );
 
 # Rhanikas
-CREATE TABLE IF NOT EXISTS course(
+CREATE TABLE IF NOT EXISTS courses(
     id_course int NOT NULL AUTO_INCREMENT,
     full_n_course VARCHAR (30) NOT NULL,
     short_n_course VARCHAR (20),
@@ -19,21 +19,23 @@ CREATE TABLE IF NOT EXISTS course(
 CREATE TABLE IF NOT EXISTS teachers(
     id_teacher int NOT NULL AUTO_INCREMENT,
     full_n_teacher VARCHAR (30) NOT NULL,
-    reg_teacher SMALLINT (5) NOT NULL UNIQUE,
-    hist_vh_teacher TINYINT (3),
-    tittle_teacher VARCHAR (20),
-    regime_w_teacher VARCHAR (40),
+    graduate_teacher VARCHAR (30) NOT NULL,
+    reg_teacher SMALLINT (8) NOT NULL UNIQUE,
+    hist_vh_teacher TINYINT (3) NOT NULL,
+    tittle_teacher VARCHAR (20) NOT NULL,
+    regime_w_teacher VARCHAR (40) NOT NULL,
     d_hiring_teacher date NOT NULL,
-    d_close_teacher date,
-    status_teacher enum ('ativo','inativo')
-    PRIMARY KEY(id_teachers)
+    d_close_teacher date NOT NULL,
+    status_teacher enum ('ativo','inativo') NOT NULL,
+    PRIMARY KEY(id_teacher)
 ); #
 
 
 CREATE TABLE IF NOT EXISTS class(
     id_class int NOT NULL AUTO_INCREMENT,
     institution VARCHAR (50) NOT NULL,
-    course VARCHAR (100),
+    course_name VARCHAR (100),
+    code_class INT NOT NULL UNIQUE,
     status_class VARCHAR (20) NOT NULL,
     type_class VARCHAR (20) NOT NULL UNIQUE,
     expected_numb_stud INT (70),

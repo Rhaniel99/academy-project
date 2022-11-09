@@ -14,6 +14,7 @@ class TeacherController(MethodView):
         msg = ''
         full_n_teacher = request.form['full_n_teacher']
         register_teacher = request.form['register_teacher']
+        graduate_teacher = request.form['graduate_teacher']
         hist_vh_teacher = request.form['hist_vh_teacher']
         tittle_teacher = request.form['tittle_teacher']
         reg_w_teacher = request.form['reg_w_teacher']
@@ -23,11 +24,13 @@ class TeacherController(MethodView):
 
         with mysql.cursor() as cur:
             try:
-                cur.execute("INSERT INTO teachers(full_n_teacher, reg_teacher, hist_vh_teacher, tittle_teacher, "
+                cur.execute("INSERT INTO teachers(full_n_teacher, graduate_teacher, reg_teacher, hist_vh_teacher, "
+                            "tittle_teacher, "
+                            " "
                             "regime_w_teacher, d_hiring_teacher, d_close_teacher, status_teacher) VALUES (%s, %s, %s, "
                             "%s, "
-                            "%s, %s, %s, %s)",
-                            (full_n_teacher, register_teacher, hist_vh_teacher, tittle_teacher, reg_w_teacher,
+                            "%s, %s, %s, %s, %s)",
+                            (full_n_teacher, graduate_teacher, register_teacher, hist_vh_teacher, tittle_teacher, reg_w_teacher,
                              hiring_d_teacher,
                              close_d_teacher, status_teacher))
                 cur.connection.commit()
@@ -57,17 +60,20 @@ class UpdateTeacherController(MethodView):
         full_n_teacher = request.form['full_n_teacher']
         regtea = request.form['register_teacher']
         hist_vh_teacher = request.form['hist_vh_teacher']
+        graduate_teacher = request.form['graduate_teacher']
         tittle_teacher = request.form['tittle_teacher']
         reg_w_teacher = request.form['reg_w_teacher']
         hiring_d_teacher = request.form['hiring_d_teacher']
         close_d_teacher = request.form['close_d_teacher']
         status_teacher = request.form['status_teacher']
 
+
         with mysql.cursor() as cur:
-            cur.execute("UPDATE teachers SET full_n_teacher = %s, reg_teacher = %s, hist_vh_teacher = %s, "
+            cur.execute("UPDATE teachers SET full_n_teacher = %s, graduate_teacher = %s, reg_teacher = %s, "
+                        "hist_vh_teacher = %s, "
                         "tittle_teacher = %s, regime_w_teacher = %s, d_hiring_teacher = %s, d_close_teacher = %s, "
                         "status_teacher = %s  WHERE id_teacher = %s ",
-                        (full_n_teacher, regtea, hist_vh_teacher, tittle_teacher, reg_w_teacher,
+                        (full_n_teacher, graduate_teacher, regtea, hist_vh_teacher, tittle_teacher, reg_w_teacher,
                          hiring_d_teacher,
                          close_d_teacher, status_teacher, id_teacher))
             cur.connection.commit()
